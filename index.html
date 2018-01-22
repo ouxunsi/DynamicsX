@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+   
+<script src="js/main.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jslides.css" media="screen" /><!--焦点图-->
+<script type="text/javascript" src="js/jquery.jslides.js"></script><!--焦点图-->
+<link rel="stylesheet" href="oxs/plus-component-pc/css/common.css">
+<script src="js/libs.min.js" type="text/javascript"></script>   
+<script>
+      $(function () {
+          navTypeTopFix();
+      })
+</script>      
+
+<title>创新海洋</title>
+</head>
+
+<body>
+<div id="bodypage">
+<div class="headmod">
+<div id="headmod">
+<div class="head1">
+<div class="pagemain">
+<div class="head">
+<div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+<div class="dhpic">
+<ul>
+<li class="arrow"></li>
+</ul>
+</div>
+<div class="g-header">
+<ul class="g-head-nav">
+<li><a href="#">首页</a></li>
+<li><a href="#">作品</a></li>
+<li><a href="#">文章</a></li>
+<li><a href="#">圈子</a></li>
+<li><a href="#">问答</a></li>
+</ul>
+
+</div>
+<div class="u-setting">
+<div class="dropdown">
+<div class="handle"><a href="#"><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">找伙伴</a></li>
+    
+    
+    <li><a style="border-bottom:none;" href="#">排行榜</a></li>
+    
+    
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="regmod"><a href="login.html">登录</a>&nbsp;&nbsp;&nbsp;<a href="regphone.html">注册</a></div>
+
+<div class="yidenglu" style="display:none;">
+<div class="u-record">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><img src="images/xiaoheadpic.jpg" /></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+    <div class="sub-menu2">
+<div class="qiandaobtn"><a href="#"><img src="images/qiandaopic.png" />每日签到</a></div><div class="yiqiandaobtn" style="display:none;"><a href="#"><img src="images/yiqiandaopic.png" />已签到</a></div>
+<div class="qiandaotit3">+5积分</div><div class="qiandaotit3" style="display:none;">已连续签到2天</div>
+    </div>
+<div class="sub-menu3">
+    <ul>
+    <li><a href="#">我的作品</a></li>
+    <li><a href="#">我的文章</a></li>
+    <li><a href="#">我的收藏</a></li>
+    <li><a href="#" style="border-bottom:none;">我的关注</a></li>
+    </ul>
+</div>
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">去认证</a></li>
+    <li><a href="#">我的钱包</a></li>
+    <li><a href="#">账户设置</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">退出</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!--消息-->
+<div class="u-msg">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><span class="redhot"></span></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">我的通知</a></li>
+    <li><a href="#">我的评论</a></li>
+    <li><a href="#">给我点赞</a></li>
+    <li><a href="#">@我的</a></li>
+    <li><a style="border-bottom:none;" href="#">我的联系人</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--上传-->
+<div class="u-upload">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">上传作品</a></li>
+    <li><a href="#">发布文章</a></li>
+    <li><a href="#">发布问题</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">发布帖子</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="nav_list">
+<div class="nav_search">
+            <input class="nav_input" type="text" placeholder="输入关键词搜索" value="" id="head_search"/>
+            <a class="nav_search_icon">
+                <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sousuo"></use></svg>
+            </a>
+
+            <div class="head_search">
+                
+                <div class="history">
+                    <p>历史记录</p>
+                    <ul></ul>
+                    <div class="clear">
+                        <a href="javascript:;" onclick="delHistory('all')">清空历史记录</a>
+                    </div>
+                </div>
+
+                
+                <div class="search_types">
+                    <ul>
+                        <li type="1"><span>与<span class="keywords"></span>相关的动态</span></li>
+                        <li type="2"><span>与<span class="keywords"></span>相关的问答</span></li>
+                        <li type="3"><span>与<span class="keywords"></span>相关的文章</span></li>
+                        <li type="4"><span>与<span class="keywords"></span>相关的用户</span></li>
+                        <li type="5"><span>与<span class="keywords"></span>相关的圈子</span></li>
+                        <li type="6"><span>与<span class="keywords"></span>相关的话题</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+
+<div class="bannermod">
+<div id="full-screen-slider">
+	<ul id="slides">
+		<li style="background:url('images/banner01.jpg') no-repeat center top"><a href="#" target="_blank">智能网站管理系统</a></li>
+		<li style="background:url('images/banner02.jpg') #000000 no-repeat center top"><a href="#" target="_blank">仙人掌软件</a></li>
+        <li style="background:url('images/banner01.jpg') no-repeat center top"><a href="#" target="_blank">智能网站管理系统</a></li>
+		<li style="background:url('images/banner02.jpg') #000000 no-repeat center top"><a href="#" target="_blank">仙人掌软件</a></li>
+        <li style="background:url('images/banner01.jpg') no-repeat center top"><a href="#" target="_blank">智能网站管理系统</a></li>
+		<li style="background:url('images/banner02.jpg') #000000 no-repeat center top"><a href="#" target="_blank">仙人掌软件</a></li>
+        <li style="background:url('images/banner01.jpg') no-repeat center top"><a href="#" target="_blank">智能网站管理系统</a></li>
+		<li style="background:url('images/banner02.jpg') #000000 no-repeat center top"><a href="#" target="_blank">仙人掌软件</a></li>
+	</ul>
+</div>
+</div>
+
+<div class="subnav-content-wrap">
+    <div class="nav4mod">
+<div class="pagemain">
+     <div class="subnav-wrap" style="left: 0px;">
+    <div class="nav4"><ul><li class="nav4licur"><a href="#">首页推荐</a></li><li><a href="#">编辑精选</a></li><li><a href="#">猜你喜欢</a></li><li><a href="#">下载源文件</a></li><li><a href="#">视频</a></li><li><a href="#">可购买</a></li></ul></div>
+</div>
+</div>
+</div>
+</div>
+
+    
+<div class="indexmod">
+<div class="pagecontent">
+<div class="mod2">
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index01.png"></a></div><div class="mod3tit1"><a href="#">美美国工业设计美国工业设计美国工业设计美...</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼王咀嚼王咀</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />1414182</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index02.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index03.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index04.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index05.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index06.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index07.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index08.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index09.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index10.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3ad">
+    <a href="newshow.html"><img src="images/adpic.jpg"></a>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index11.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index12.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index13.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index14.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+<div class="mod3">
+<div class="mod3pic"><a href="newshow.html"><img src="images/index15.png"></a></div><div class="mod3tit1"><a href="#">美国工业设计</a></div>
+<div class="mod4">
+<div class="mod4tit2"><a href="designerlist.html">王咀嚼</a></div>
+<div class="mod4right">
+<div class="mod4tit3"><img src="images/biao1.png" />14141</div><div class="mod4tit4"><a href="#"><img src="images/zanpic1.png" /></a></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+
+<div class="zxpagemod">
+<div class="zxpage">
+<a class="prev"></a>
+<a href="#">1</a>
+<a href="#">2</a>
+<a class="current" href="#">3</a>
+<a href="#">4</a>
+<a href="#">…</a>
+<a href="#">99</a>
+<a href="#">100</a>
+<a class="next" href="#"></a>
+</div>
+</div>
+</div>
+</div>
+
+<script src="oxs/plus-component-pc/js/common.js"></script> 
+<script src="oxs/plus-component-pc/js/lodash.js"></script> 
+<script src="oxs/plus-component-pc/js/font/iconfont.js"></script> 
+<script src="oxs/plus-component-pc/js/jquery.lazyload.min.js"></script> 
+<script src="oxs/plus-component-pc/js/jquery.cookie.js"></script> 
+<script src="oxs/plus-component-pc/layer/layer.js"></script> 
+<script src="oxs/plus-component-pc/js/dexie.js"></script> 
+<script src="oxs/plus-component-pc/js/module.message.js"></script> 
+<script src="oxs/plus-component-pc/js/module.question.js"></script> 
+
+
+
+<div class="copyrightmod"><div class="pagemain"><div class="copyright1"><a href="#" style="padding-left:0;">关于我们</a>&nbsp;| &nbsp;<a href="#">加入超动力</a>&nbsp;|&nbsp;<a href="#">用户协议</a>&nbsp;|&nbsp;<a href="#">企业服务</a>&nbsp;|&nbsp;<a href="#">帮助中心</a>&nbsp;|&nbsp;<a href="#">联系我们</a></div><div class="copyright2">Copyright © 2018-2018 DynamicsX.CN 京ICP备14028320号</div></div></div></div></body>
+</html>

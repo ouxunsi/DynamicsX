@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/*-- 页面辅助文字 --*/
+/*-- 页面辅助文字 --*/
+/* -- 按钮 -- */
+/*-- 文本截取，超出一行行加省略号 --*/
+/*-- 文本截取，超出两行加省略号 --*/
+/*-- 圆角 --*/
+/*-- inline-block --*/
+/*-- 透明度 --*/
+/*-- 一级下拉菜单样式 --*/
+/*-- 导航下拉菜单原始样式 --*/
+/*-- 导航下拉菜单hover样式 --*/
+/*-- new标记 --*/
+/*-- 分隔符 --*/
+@import url(uploadmedia.css);
+.counter {
+  position: absolute;
+  right: 20px;
+  font-style: normal;
+  font-size: 12px;
+  color: #999999; }
+
+/*-- 按钮通用 --*/
+/*-- 卡片透明度 --*/
+/*-- 小三角朝下投影效果 --*/
+.counter {
+  position: absolute;
+  right: 20px;
+  font-style: normal;
+  font-size: 12px;
+  color: #999999; }
+
+.article-edit-wrap .redwarn {
+  margin-top: 19px; }
+
+.select-position-box ul li {
+  padding: 0; }
+
+.select-position-box label {
+  display: block;
+  padding: 13px 30px; }
+
+.select-position-box .check-c,
+.select-position-box .check-cd {
+  background-position: 30px center; }
+
+.select-position-box .trade-tips {
+  margin-bottom: 6px;
+  display: block;
+  text-align: center; }
+
+.select-con ul li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.link-error-box {
+  display: inline-block;
+  width: 16px; }
+  .link-error-box .hide {
+    display: none; }
+
+.drafts {
+  float: right;
+  line-height: 42px; }
+
+.wrapper .article .progress {
+  width: 260px;
+  height: 6px;
+  margin-left: 17px;
+  margin-right: 7px;
+  background: #eeeeee;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  border-radius: 10px;
+  overflow: hidden; }
+  .wrapper .article .progress .filling-progress {
+    width: 80%;
+    height: 6px;
+    background: #ffd100;
+    display: block;
+    border-radius: 10px; }
+
+.wrapper .article .select-con .select-option-label {
+  width: 172px; }
+
+.wrapper .article .select-con .select-confrim {
+  width: 100%;
+  height: 36px; }
+
+.wrapper .article .select-con .select-option-checkbox .label {
+  width: 100%; }
+
+.wrapper .article .work-selectbox > ul > li .selected {
+  max-width: 122px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline; }
+
+.wrapper .article .work-selectbox > ul > li .select-position-box {
+  width: 160px;
+  padding-top: 15px;
+  background: #ffffff; }
+  .wrapper .article .work-selectbox > ul > li .select-position-box .territory-btn {
+    padding: 20px; }
+
+.wrapper .article .work-discriptionbox {
+  position: relative; }
+  .wrapper .article .work-discriptionbox .focus-height {
+    height: 56px; }
+
+.rough {
+  line-height: 42px;
+  background: transparent;
+  font-size: 14px;
+  color: #666666; }
+
+.edit-bd {
+  padding-left: 20px; }
+
+@media screen and (max-width: 1600px) {
+  .edit-bd {
+    width: 698px; } }
+
+@media screen and (min-width: 1601px) {
+  .edit-bd {
+    width: 900px; } }

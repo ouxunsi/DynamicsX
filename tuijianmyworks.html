@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <script>
+     var TS = {};
+     // 公共配置
+     TS.API = 'http://tsplus.zhibocloud.cn/api/v2';
+     TS.TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjc0NiwiaXNzIjoiaHR0cDovL3RzcGx1cy56aGlib2Nsb3VkLmNuL2FwaS92Mi90b2tlbnMiLCJpYXQiOjE1MTE1MDQ1MDcsImV4cCI6MTUxMjcxNDEwNywibmJmIjoxNTExNTA0NTA3LCJqdGkiOiJycGc5aXNSeWlLelpaa1c2In0.-Rjfik0A6uFqp7hwstDnIl9faVSzt_JRfYt7NMHy9wQ";
+     TS.SITE_URL = "http://tsplus.zhibocloud.cn";
+     TS.RESOURCE_URL = 'http://tsplus.zhibocloud.cn/zhiyicx/plus-component-pc';
+     // 登录用户对象
+     TS.USER = { "id": 746, "name": "wdesign", "email": "wzj@ouxunsi.com", "phone": null, "location": null, "sex": 0, "bio": null, "created_at": "2017-09-28 09:41:03", "updated_at": "2017-10-31 02:08:20", "avatar": null, "bg": null, "verified": null, "extra": { "user_id": 746, "likes_count": 0, "comments_count": 1, "followers_count": 2, "followings_count": 1, "updated_at": "2017-11-15 08:19:56", "feeds_count": 0, "questions_count": 0, "answers_count": 0, "checkin_count": 1, "last_checkin_count": 1, "live_zans_count": 0, "live_zans_remain": 0, "live_time": 0 }, "wallet": { "id": 740, "user_id": 746, "balance": 960, "created_at": "2017-09-28 09:41:03", "updated_at": "2017-10-26 09:23:04", "deleted_at": null } };
+     TS.MID = TS.USER ? TS.USER['id'] : 0;
+     TS.BOOT = { "hots_area": [{ "name": "\u4e2d\u56fd \u56db\u5ddd\u7701 \u6210\u90fd\u5e02", "sort": 10 }], "im:api": "http:\/\/tsplus.zhibocloud.cn:9900", "im:helper": [{ "uid": 137, "url": "http:\/\/www.thinksns.com" }], "im:serve": "ws:\/\/tsplus.zhibocloud.cn:9900", "wallet:ratio": 1000, "wallet:recharge-type": ["alipay", "alipay_pc_direct", "applepay_upacp"], "ad": [{ "id": 45, "space_id": 1, "title": "ThinkSNS\u6b63\u5f0f\u542f\u52a8\u521b\u4e1a\u6276\u6301\u8ba1\u5212", "type": "image", "data": { "image": "http:\/\/tsplus.zhibocloud.cn\/api\/v2\/files\/4923", "link": "http:\/\/www.thinksns.com\/support.html", "duration": 2 }, "sort": 0, "created_at": "2017-11-16 06:56:49", "updated_at": "2017-11-20 09:11:37" }, { "id": 23, "space_id": 1, "title": "\u53cc11\u6574\u6708\u72c2\u6b22\u8d2d\uff0c\u53cc\u798f\u5229\u6765\u88ad\uff01\uff01\uff01", "type": "image", "data": { "image": "http:\/\/tsplus.zhibocloud.cn\/api\/v2\/files\/4563", "link": "http:\/\/tsplus.zhibocloud.cn\/news\/214", "title": "", "duration": 2 }, "sort": 1, "created_at": "2017-09-30 09:03:47", "updated_at": "2017-11-09 03:32:19" }, { "id": 1, "space_id": 1, "title": "\u5e7f\u544a1", "type": "image", "data": { "image": "http:\/\/tsplus.zhibocloud.cn\/api\/v2\/files\/3555", "link": "http:\/\/tsplus.zhibocloud.cn\/news\/154", "title": "", "duration": 2 }, "sort": 2, "created_at": "2017-07-27 15:09:15", "updated_at": "2017-11-09 03:53:30" }], "site": { "gold": { "status": true }, "reward": { "status": true, "amounts": "5,10,15" }, "reserved_nickname": "root,admin,TS,thinksns,thinksns+", "client_email": "admin@123.com", "user_invite_template": "\u6211\u53d1\u73b0\u4e86\u4e00\u4e2a\u5168\u5e73\u53f0\u793e\u4ea4\u7cfb\u7edfThinkSNS+\uff0c\u5feb\u6765\u52a0\u5165\u5427\uff1ahttp:\/\/t.cn\/RpFfbbi", "status": true, "off_reason": "\u7ad9\u70b9\u7ef4\u62a4\u4e2d\u8bf7\u7a0d\u540e\u518d\u8bbf\u95ee", "app": { "status": true }, "h5": { "status": true }, "gold_name": { "name": "\u8d1d\u58f3", "unit": "\u4e2a" } }, "registerSettings": { "rules": "close", "method": "all", "type": "all", "content": "\u4e00\u3001\u7279\u522b\u63d0\u793a\n\u5728\u6b64\u7279\u522b\u63d0\u9192\u60a8\uff08\u7528\u6237\uff09\u5728\u6ce8\u518c\u6210\u4e3aThinkSNS+\u7528\u6237\u4e4b\u524d\uff0c\u8bf7\u8ba4\u771f\u9605\u8bfb\u672c\u300aThinkSNS+\u7528\u6237\u670d\u52a1\u534f\u8bae\u300b\uff08\u4ee5\u4e0b\u7b80\u79f0\u201c\u534f\u8bae\u201d\uff09\uff0c\u786e\u4fdd\u60a8\u5145\u5206\u7406\u89e3\u672c\u534f\u8bae\u4e2d\u5404\u6761\u6b3e\u3002\u8bf7\u60a8\u5ba1\u614e\u9605\u8bfb\u5e76\u9009\u62e9\u63a5\u53d7\u6216\u4e0d\u63a5\u53d7\u672c\u534f\u8bae\u3002\u9664\u975e\u60a8\u63a5\u53d7\u672c\u534f\u8bae\u6240\u6709\u6761\u6b3e\uff0c\u5426\u5219\u60a8\u65e0\u6743\u6ce8\u518c\u3001\u767b\u5f55\u6216\u4f7f\u7528\u672c\u534f\u8bae\u6240\u6d89\u670d\u52a1\u3002\u60a8\u7684\u6ce8\u518c\u3001\u767b\u5f55\u3001\u4f7f\u7528\u7b49\u884c\u4e3a\u5c06\u89c6\u4e3a\u5bf9\u672c\u534f\u8bae\u7684\u63a5\u53d7\uff0c\u5e76\u540c\u610f\u63a5\u53d7\u672c\u534f\u8bae\u5404\u9879\u6761\u6b3e\u7684\u7ea6\u675f\u3002 \u672c\u534f\u8bae\u7ea6\u5b9aThinkSNS+\u4e0e\u7528\u6237\u4e4b\u95f4\u5173\u4e8e\u201c\u8f6f\u4ef6\u6d4b\u8bd5\u8bd5\u7528\u201d\u670d\u52a1\uff08\u4ee5\u4e0b\u7b80\u79f0\u201c\u670d\u52a1\u201d\uff09\u7684\u6743\u5229\u4e49\u52a1\u3002\u201c\u7528\u6237\u201d\u662f\u6307\u6ce8\u518c\u3001\u767b\u5f55\u3001\u4f7f\u7528\u672c\u670d\u52a1\u7684\u4e2a\u4eba\u3002\u672c\u534f\u8bae\u53ef\u7531ThinkSNS+\u5b98\u65b9\u968f\u65f6\u66f4\u65b0\uff0c\u66f4\u65b0\u540e\u7684\u534f\u8bae\u6761\u6b3e\u4e00\u65e6\u516c\u5e03\u5373\u4ee3\u66ff\u539f\u6765\u7684\u534f\u8bae\u6761\u6b3e\uff0c\u6055\u4e0d\u518d\u53e6\u884c\u901a\u77e5\uff0c\u7528\u6237\u53ef\u5728\u672cAPP\u4e2d\u67e5\u9605\u6700\u65b0\u7248\u534f\u8bae\u6761\u6b3e\u3002\u5728\u4fee\u6539\u534f\u8bae\u6761\u6b3e\u540e\uff0c\u5982\u679c\u7528\u6237\u4e0d\u63a5\u53d7\u4fee\u6539\u540e\u7684\u6761\u6b3e\uff0c\u8bf7\u7acb\u5373\u505c\u6b62\u4f7f\u7528ThinkSNS+\u63d0\u4f9b\u7684\u670d\u52a1\uff0c\u7528\u6237\u7ee7\u7eed\u4f7f\u7528ThinkSNS+\u63d0\u4f9b\u7684\u670d\u52a1\u5c06\u88ab\u89c6\u4e3a\u63a5\u53d7\u4fee\u6539\u540e\u7684\u534f\u8bae\u3002\n\u4e8c\u3001\u8d26\u53f7\u6ce8\u518c\n1\u3001\u7528\u6237\u5728\u4f7f\u7528\u672c\u670d\u52a1\u524d\u9700\u8981\u6ce8\u518c\u4e00\u4e2a\u201cThinkSNS+\u201d\u8d26\u53f7\u3002\u201cThinkSNS+\u201d\u8d26\u53f7\u5e94\u5f53\u4f7f\u7528\u624b\u673a\u53f7\u7801\u7ed1\u5b9a\u6ce8\u518c\uff0c\u8bf7\u7528\u6237\u4f7f\u7528\u5c1a\u672a\u4e0e\u201cThinkSNS+\u201d\u8d26\u53f7\u7ed1\u5b9a\u7684\u624b\u673a\u53f7\u7801\uff0c\u4ee5\u53ca\u672a\u88abThinkSNS+\u6839\u636e\u672c\u534f\u8bae\u5c01\u7981\u7684\u624b\u673a\u53f7\u7801\u6ce8\u518c\u201cThinkSNS+\u201d\u8d26\u53f7\u3002ThinkSNS+\u53ef\u4ee5\u6839\u636e\u7528\u6237\u9700\u6c42\u6216\u4ea7\u54c1\u9700\u8981\u5bf9\u8d26\u53f7\u6ce8\u518c\u548c\u7ed1\u5b9a\u7684\u65b9\u5f0f\u8fdb\u884c\u53d8\u66f4\uff0c\u800c\u65e0\u987b\u4e8b\u5148\u901a\u77e5\u7528\u6237\u3002\n2\u3001\u5982\u679c\u6ce8\u518c\u7533\u8bf7\u8005\u6709\u88abThinkSNS+\u7981\u7684\u5148\u4f8b\u6216\u6d89\u5acc\u865a\u5047\u6ce8\u518c\u53ca\u6ee5\u7528\u4ed6\u4eba\u540d\u4e49\u6ce8\u518c\uff0c\u53ca\u5176\u4ed6\u4e0d\u80fd\u5f97\u5230\u8bb8\u53ef\u7684\u7406\u7531\uff0cThinkSNS+\u5c06\u62d2\u7edd\u5176\u6ce8\u518c\u7533\u8bf7\u3002\n3\u3001\u9274\u4e8e\u201cThinkSNS+\u201d\u8d26\u53f7\u7684\u7ed1\u5b9a\u6ce8\u518c\u65b9\u5f0f\uff0c\u60a8\u540c\u610fThinkSNS+\u5728\u6ce8\u518c\u65f6\u5c06\u5141\u8bb8\u60a8\u7684\u624b\u673a\u53f7\u7801\u53ca\u624b\u673a\u8bbe\u5907\u8bc6\u522b\u7801\u7b49\u4fe1\u606f\u7528\u4e8e\u6ce8\u518c\u3002\n4\u3001\u5728\u7528\u6237\u6ce8\u518c\u53ca\u4f7f\u7528\u672c\u670d\u52a1\u65f6\uff0cThinkSNS+\u9700\u8981\u641c\u96c6\u80fd\u8bc6\u522b\u7528\u6237\u8eab\u4efd\u7684\u4e2a\u4eba\u4fe1\u606f\u4ee5\u4fbfThinkSNS+\u53ef\u4ee5\u5728\u5fc5\u8981\u65f6\u8054\u7cfb\u7528\u6237\uff0c\u6216\u4e3a\u7528\u6237\u63d0\u4f9b\u66f4\u597d\u7684\u4f7f\u7528\u4f53\u9a8c\u3002ThinkSNS+\u641c\u96c6\u7684\u4fe1\u606f\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u7528\u6237\u7684\u59d3\u540d\u3001\u5730\u5740\uff1bThinkSNS+\u540c\u610f\u5bf9\u8fd9\u4e9b\u4fe1\u606f\u7684\u4f7f\u7528\u5c06\u53d7\u9650\u4e8e\u7b2c\u4e09\u6761\u7528\u6237\u4e2a\u4eba\u9690\u79c1\u4fe1\u606f\u4fdd\u62a4\u7684\u7ea6\u675f\u3002\n\u4e09\u3001\u8d26\u6237\u5b89\u5168\n1\u3001\u7528\u6237\u4e00\u65e6\u6ce8\u518c\u6210\u529f\uff0c\u6210\u4e3aThinkSNS+\u7684\u7528\u6237\uff0c\u5c06\u5f97\u5230\u4e00\u4e2a\u7528\u6237\u540d\u548c\u5bc6\u7801\uff0c\u5e76\u6709\u6743\u5229\u4f7f\u7528\u81ea\u5df1\u7684\u7528\u6237\u540d\u53ca\u5bc6\u7801\u968f\u65f6\u767b\u9646ThinkSNS+\u3002\n2\u3001\u7528\u6237\u5bf9\u7528\u6237\u540d\u548c\u5bc6\u7801\u7684\u5b89\u5168\u8d1f\u5168\u90e8\u8d23\u4efb\uff0c\u540c\u65f6\u5bf9\u4ee5\u5176\u7528\u6237\u540d\u8fdb\u884c\u7684\u6240\u6709\u6d3b\u52a8\u548c\u4e8b\u4ef6\u8d1f\u5168\u8d23\u3002\n3\u3001\u7528\u6237\u4e0d\u5f97\u4ee5\u4efb\u4f55\u5f62\u5f0f\u64c5\u81ea\u8f6c\u8ba9\u6216\u6388\u6743\u4ed6\u4eba\u4f7f\u7528\u81ea\u5df1\u7684ThinkSNS+\u7528\u6237\u540d\u3002\n4\u3001\u5982\u679c\u7528\u6237\u6cc4\u6f0f\u4e86\u5bc6\u7801\uff0c\u6709\u53ef\u80fd\u5bfc\u81f4\u4e0d\u5229\u7684\u6cd5\u5f8b\u540e\u679c\uff0c\u56e0\u6b64\u4e0d\u7ba1\u4efb\u4f55\u539f\u56e0\u5bfc\u81f4\u7528\u6237\u7684\u5bc6\u7801\u5b89\u5168\u53d7\u5230\u5a01\u80c1\uff0c\u5e94\u8be5\u7acb\u5373\u548cThinkSNS+\u5ba2\u670d\u4eba\u5458\u53d6\u5f97\u8054\u7cfb\uff0c\u5426\u5219\u540e\u679c\u81ea\u8d1f\u3002\n\u56db\u3001\u7528\u6237\u58f0\u660e\u4e0e\u4fdd\u8bc1\n1\u3001\u7528\u6237\u627f\u8bfa\u5176\u4e3a\u5177\u6709\u5b8c\u5168\u6c11\u4e8b\u884c\u4e3a\u80fd\u529b\u7684\u6c11\u4e8b\u4e3b\u4f53\uff0c\u4e14\u5177\u6709\u8fbe\u6210\u4ea4\u6613\u5c65\u884c\u5176\u4e49\u52a1\u7684\u80fd\u529b\u3002\n2\u3001\u7528\u6237\u6709\u4e49\u52a1\u5728\u6ce8\u518c\u65f6\u63d0\u4f9b\u81ea\u5df1\u7684\u771f\u5b9e\u8d44\u6599\uff0c\u5e76\u4fdd\u8bc1\u8bf8\u5982\u624b\u673a\u53f7\u7801\u3001\u59d3\u540d\u3001\u6240\u5728\u5730\u533a\u7b49\u5185\u5bb9\u7684\u6709\u6548\u6027\u53ca\u5b89\u5168\u6027\uff0c\u4fdd\u8bc1ThinkSNS+\u5de5\u4f5c\u4eba\u5458\u53ef\u4ee5\u901a\u8fc7\u4e0a\u8ff0\u8054\u7cfb\u65b9\u5f0f\u4e0e\u7528\u6237\u53d6\u5f97\u8054\u7cfb\u3002\u540c\u65f6\uff0c\u7528\u6237\u4e5f\u6709\u4e49\u52a1\u5728\u76f8\u5173\u8d44\u6599\u5b9e\u9645\u53d8\u66f4\u65f6\u53ca\u65f6\u66f4\u65b0\u6709\u5173\u6ce8\u518c\u8d44\u6599\u3002\n3\u3001\u7528\u6237\u901a\u8fc7\u4f7f\u7528ThinkSNS+\u7684\u8fc7\u7a0b\u4e2d\u6240\u5236\u4f5c\u3001\u4e0a\u8f7d\u3001\u590d\u5236\u3001\u53d1\u5e03\u3001\u4f20\u64ad\u7684\u4efb\u4f55\u5185\u5bb9\uff0c\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u8d26\u53f7\u5934\u50cf\u3001\u540d\u79f0\u3001\u7528\u6237\u8bf4\u660e\u7b49\u6ce8\u518c\u4fe1\u606f\u53ca\u8ba4\u8bc1\u8d44\u6599\uff0c\u6216\u6587\u5b57\u3001\u8bed\u97f3\u3001\u56fe\u7247\u3001\u89c6\u9891\u3001\u56fe\u6587\u7b49\u53d1\u9001\u3001\u56de\u590d\u548c\u76f8\u5173\u94fe\u63a5\u9875\u9762\uff0c\u4ee5\u53ca\u5176\u4ed6\u4f7f\u7528\u8d26\u53f7\u6216\u672c\u670d\u52a1\u6240\u4ea7\u751f\u7684\u5185\u5bb9\uff0c\u4e0d\u5f97\u8fdd\u53cd\u56fd\u5bb6\u76f8\u5173\u6cd5\u5f8b\u5236\u5ea6\uff0c\u5305\u542b\u4f46\u4e0d\u9650\u4e8e\u5982\u4e0b\u539f\u5219\uff1a\n\uff081\uff09\u53cd\u5bf9\u5baa\u6cd5\u6240\u786e\u5b9a\u7684\u57fa\u672c\u539f\u5219\u7684\uff1b\n\uff082\uff09\u5371\u5bb3\u56fd\u5bb6\u5b89\u5168\uff0c\u6cc4\u9732\u56fd\u5bb6\u79d8\u5bc6\uff0c\u98a0\u8986\u56fd\u5bb6\u653f\u6743\uff0c\u7834\u574f\u56fd\u5bb6\u7edf\u4e00\u7684\uff1b\n\uff083\uff09\u635f\u5bb3\u56fd\u5bb6\u8363\u8a89\u548c\u5229\u76ca\u7684\uff1b\n\uff084\uff09\u717d\u52a8\u6c11\u65cf\u4ec7\u6068\u3001\u6c11\u65cf\u6b67\u89c6\uff0c\u7834\u574f\u6c11\u65cf\u56e2\u7ed3\u7684\uff1b\n\uff085\uff09\u7834\u574f\u56fd\u5bb6\u5b97\u6559\u653f\u7b56\uff0c\u5ba3\u626c\u90aa\u6559\u548c\u5c01\u5efa\u8ff7\u4fe1\u7684\uff1b\n\uff086\uff09\u6563\u5e03\u8c23\u8a00\uff0c\u6270\u4e71\u793e\u4f1a\u79e9\u5e8f\uff0c\u7834\u574f\u793e\u4f1a\u7a33\u5b9a\u7684\uff1b\n\uff087\uff09\u6563\u5e03\u6deb\u79fd\u3001\u8272\u60c5\u3001\u8d4c\u535a\u3001\u66b4\u529b\u3001\u51f6\u6740\u3001\u6050\u6016\u6216\u8005\u6559\u5506\u72af\u7f6a\u7684\uff1b\n\uff088\uff09\u4fae\u8fb1\u6216\u8005\u8bfd\u8c24\u4ed6\u4eba\uff0c\u4fb5\u5bb3\u4ed6\u4eba\u5408\u6cd5\u6743\u76ca\u7684\uff1b\n\uff089\uff09\u542b\u6709\u6cd5\u5f8b\u3001\u884c\u653f\u6cd5\u89c4\u7981\u6b62\u7684\u5176\u4ed6\u5185\u5bb9\u7684\u3002\n4\u3001\u7528\u6237\u4e0d\u5f97\u5229\u7528\u201cThinkSNS+\u201d\u8d26\u53f7\u6216\u672c\u670d\u52a1\u5236\u4f5c\u3001\u4e0a\u8f7d\u3001\u590d\u5236\u3001\u53d1\u5e03\u3001\u4f20\u64ad\u4e0b\u5e72\u6270\u201cThinkSNS+\u201d\u6b63\u5e38\u8fd0\u8425\uff0c\u4ee5\u53ca\u4fb5\u72af\u5176\u4ed6\u7528\u6237\u6216\u7b2c\u4e09\u65b9\u5408\u6cd5\u6743\u76ca\u7684\u5185\u5bb9\uff1a\n\uff081\uff09\u542b\u6709\u4efb\u4f55\u6027\u6216\u6027\u6697\u793a\u7684\uff1b\n\uff082\uff09\u542b\u6709\u8fb1\u9a82\u3001\u6050\u5413\u3001\u5a01\u80c1\u5185\u5bb9\u7684\uff1b\n\uff083\uff09\u542b\u6709\u9a9a\u6270\u3001\u5783\u573e\u5e7f\u544a\u3001\u6076\u610f\u4fe1\u606f\u3001\u8bf1\u9a97\u4fe1\u606f\u7684\uff1b\n\uff084\uff09\u6d89\u53ca\u4ed6\u4eba\u9690\u79c1\u3001\u4e2a\u4eba\u4fe1\u606f\u6216\u8d44\u6599\u7684\uff1b\n\uff085\uff09\u4fb5\u5bb3\u4ed6\u4eba\u540d\u8a89\u6743\u3001\u8096\u50cf\u6743\u3001\u77e5\u8bc6\u4ea7\u6743\u3001\u5546\u4e1a\u79d8\u5bc6\u7b49\u5408\u6cd5\u6743\u5229\u7684\uff1b\n\uff086\uff09\u542b\u6709\u5176\u4ed6\u5e72\u6270\u672c\u670d\u52a1\u6b63\u5e38\u8fd0\u8425\u548c\u4fb5\u72af\u5176\u4ed6\u7528\u6237\u6216\u7b2c\u4e09\u65b9\u5408\u6cd5\u6743\u76ca\u5185\u5bb9\u7684\u4fe1\u606f\u3002\n\u4e94\u3001\u670d\u52a1\u5185\u5bb9\n1\u3001ThinkSNS+\u5177\u4f53\u670d\u52a1\u5185\u5bb9\u7531ThinkSNS+\u6839\u636e\u5b9e\u9645\u60c5\u51b5\u63d0\u4f9b\uff0c\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\uff1a\n\uff081\uff09\u5728\u7ebf\u54a8\u8be2\u670d\u52a1\uff1b\n\uff082\uff09\u670d\u52a1\u5546\u6536\u5165\u7ed3\u7b97\u548c\u7528\u6237\u652f\u4ed8\u8d39\u7528\uff1a\u5177\u4f53\u91d1\u989d\u4ee5ThinkSNS+\u4ea7\u751f\u7684\u7edf\u8ba1\u6570\u636e\u4e3a\u51c6\u3002\n2\u3001ThinkSNS+\u6709\u6743\u968f\u65f6\u5ba1\u6838\u6216\u5220\u9664\u7528\u6237\u53d1\u5e03\/\u4f20\u64ad\u7684\u6d89\u5acc\u8fdd\u6cd5\u6216\u8fdd\u53cd\u793e\u4f1a\u4e3b\u4e49\u7cbe\u795e\u6587\u660e\uff0c\u6216\u8005\u88abThinkSNS+\u8ba4\u4e3a\u4e0d\u59a5\u5f53\u7684\u5185\u5bb9\uff08\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u6587\u5b57\u3001\u8bed\u97f3\u3001\u56fe\u7247\u3001\u89c6\u9891\u3001\u56fe\u6587\u7b49\uff09\u3002\n3\u3001\u6240\u6709\u53d1\u7ed9\u7528\u6237\u7684\u901a\u544a\u53ca\u5176\u4ed6\u6d88\u606f\u90fd\u53ef\u901a\u8fc7APP\u6216\u8005\u7528\u6237\u6240\u63d0\u4f9b\u7684\u8054\u7cfb\u65b9\u5f0f\u53d1\u9001\u3002\n\u516d\u3001\u670d\u52a1\u7684\u7ec8\u6b62\n1\u3001\u5728\u4e0b\u5217\u60c5\u51b5\u4e0b\uff0cThinkSNS+\u6709\u6743\u7ec8\u6b62\u5411\u7528\u6237\u63d0\u4f9b\u670d\u52a1\uff1a\n\uff081\uff09\u5728\u7528\u6237\u8fdd\u53cd\u672c\u670d\u52a1\u534f\u8bae\u76f8\u5173\u89c4\u5b9a\u65f6\uff0cThinkSNS+\u6709\u6743\u7ec8\u6b62\u5411\u8be5\u7528\u6237\u63d0\u4f9b\u670d\u52a1\u3002\u5982\u8be5\u7528\u6237\u518d\u4e00\u6b21\u76f4\u63a5\u6216\u95f4\u63a5\u6216\u4ee5\u4ed6\u4eba\u540d\u4e49\u6ce8\u518c\u4e3a\u7528\u6237\u7684\uff0c\u4e00\u7ecf\u53d1\u73b0\uff0cThinkSNS+\u6709\u6743\u76f4\u63a5\u5355\u65b9\u9762\u7ec8\u6b62\u5411\u8be5\u7528\u6237\u63d0\u4f9b\u670d\u52a1\uff1b\n\uff082\uff09\u5982ThinkSNS+\u901a\u8fc7\u7528\u6237\u63d0\u4f9b\u7684\u4fe1\u606f\u4e0e\u7528\u6237\u8054\u7cfb\u65f6\uff0c\u53d1\u73b0\u7528\u6237\u5728\u6ce8\u518c\u65f6\u586b\u5199\u7684\u8054\u7cfb\u65b9\u5f0f\u5df2\u4e0d\u5b58\u5728\u6216\u65e0\u6cd5\u63a5\u901a\uff0cThinkSNS+\u4ee5\u5176\u5b83\u8054\u7cfb\u65b9\u5f0f\u901a\u77e5\u7528\u6237\u66f4\u6539\uff0c\u800c\u7528\u6237\u5728\u4e09\u4e2a\u5de5\u4f5c\u65e5\u5185\u4ecd\u672a\u80fd\u63d0\u4f9b\u65b0\u7684\u8054\u7cfb\u65b9\u5f0f\uff0cThinkSNS+\u6709\u6743\u7ec8\u6b62\u5411\u8be5\u7528\u6237\u63d0\u4f9b\u670d\u52a1\uff1b\n\uff083\uff09\u7528\u6237\u4e0d\u5f97\u901a\u8fc7\u7a0b\u5e8f\u6216\u4eba\u5de5\u65b9\u5f0f\u8fdb\u884c\u5237\u91cf\u6216\u4f5c\u5f0a\uff0c\u82e5\u53d1\u73b0\u7528\u6237\u6709\u4f5c\u5f0a\u884c\u4e3a\uff0cThinkSNS+\u5c06\u7acb\u5373\u7ec8\u6b62\u670d\u52a1\uff0c\u5e76\u6709\u6743\u6263\u7559\u8d26\u6237\u5185\u91d1\u989d\uff1b\n\uff084\uff09\u4e00\u65e6ThinkSNS+\u53d1\u73b0\u7528\u6237\u63d0\u4f9b\u7684\u6570\u636e\u6216\u4fe1\u606f\u4e2d\u542b\u6709\u865a\u5047\u5185\u5bb9\uff0cThinkSNS+\u6709\u6743\u968f\u65f6\u7ec8\u6b62\u5411\u8be5\u7528\u6237\u63d0\u4f9b\u670d\u52a1\uff1b\n\uff085\uff09\u672c\u670d\u52a1\u6761\u6b3e\u7ec8\u6b62\u6216\u66f4\u65b0\u65f6\uff0c\u7528\u6237\u660e\u793a\u4e0d\u613f\u63a5\u53d7\u65b0\u7684\u670d\u52a1\u6761\u6b3e\uff1b\n\uff086\uff09\u5176\u5b83ThinkSNS+\u8ba4\u4e3a\u9700\u7ec8\u6b62\u670d\u52a1\u7684\u60c5\u51b5\u3002\n2\u3001\u670d\u52a1\u7ec8\u6b62\u540e\uff0cThinkSNS+\u6ca1\u6709\u4e49\u52a1\u4e3a\u7528\u6237\u4fdd\u7559\u539f\u8d26\u53f7\u4e2d\u6216\u4e0e\u4e4b\u76f8\u5173\u7684\u4efb\u4f55\u4fe1\u606f\uff0c\u6216\u8f6c\u53d1\u4efb\u4f55\u672a\u66fe\u9605\u8bfb\u6216\u53d1\u9001\u7684\u4fe1\u606f\u7ed9\u7528\u6237\u6216\u7b2c\u4e09\u65b9\u3002\n\u4e03\u3001\u670d\u52a1\u7684\u53d8\u66f4\u3001\u4e2d\u65ad\n1\u3001\u9274\u4e8e\u7f51\u7edc\u670d\u52a1\u7684\u7279\u6b8a\u6027\uff0c\u7528\u6237\u9700\u540c\u610fThinkSNS+\u4f1a\u53d8\u66f4\u3001\u4e2d\u65ad\u90e8\u5206\u6216\u5168\u90e8\u7684\u7f51\u7edc\u670d\u52a1\uff0c\u5e76\u5220\u9664\uff08\u4e0d\u518d\u4fdd\u5b58\uff09\u7528\u6237\u5728\u4f7f\u7528\u8fc7\u7a0b\u4e2d\u63d0\u4ea4\u7684\u4efb\u4f55\u8d44\u6599\uff0c\u800c\u65e0\u9700\u901a\u77e5\u7528\u6237\uff0c\u4e5f\u65e0\u9700\u5bf9\u4efb\u4f55\u7528\u6237\u6216\u4efb\u4f55\u7b2c\u4e09\u65b9\u627f\u62c5\u4efb\u4f55\u8d23\u4efb\u3002\n2\u3001ThinkSNS+\u9700\u8981\u5b9a\u671f\u6216\u4e0d\u5b9a\u671f\u5730\u5bf9\u63d0\u4f9b\u7f51\u7edc\u670d\u52a1\u7684\u5e73\u53f0\u8fdb\u884c\u68c0\u6d4b\u6216\u8005\u66f4\u65b0\uff0c\u5982\u56e0\u6b64\u7c7b\u60c5\u51b5\u800c\u9020\u6210\u7f51\u7edc\u670d\u52a1\u5728\u5408\u7406\u65f6\u95f4\u5185\u7684\u4e2d\u65ad\uff0cThinkSNS+\u65e0\u9700\u4e3a\u6b64\u627f\u62c5\u4efb\u4f55\u8d23\u4efb\u3002\n\u516b\u3001\u670d\u52a1\u6761\u6b3e\u4fee\u6539\n1\u3001ThinkSNS+\u6709\u6743\u968f\u65f6\u4fee\u6539\u672c\u670d\u52a1\u6761\u6b3e\u7684\u4efb\u4f55\u5185\u5bb9\uff0c\u4e00\u65e6\u672c\u670d\u52a1\u6761\u6b3e\u7684\u4efb\u4f55\u5185\u5bb9\u53d1\u751f\u53d8\u52a8\uff0cThinkSNS+\u5c06\u4f1a\u901a\u8fc7\u9002\u5f53\u65b9\u5f0f\u5411\u7528\u6237\u63d0\u793a\u4fee\u6539\u5185\u5bb9\u3002\n2\u3001\u5982\u679c\u4e0d\u540c\u610fThinkSNS+\u5bf9\u672c\u670d\u52a1\u6761\u6b3e\u6240\u505a\u7684\u4fee\u6539\uff0c\u7528\u6237\u6709\u6743\u505c\u6b62\u4f7f\u7528\u7f51\u7edc\u670d\u52a1\u3002\n3\u3001\u5982\u679c\u7528\u6237\u7ee7\u7eed\u4f7f\u7528\u7f51\u7edc\u670d\u52a1\uff0c\u5219\u89c6\u4e3a\u7528\u6237\u63a5\u53d7ThinkSNS+\u5bf9\u672c\u670d\u52a1\u6761\u6b3e\u6240\u505a\u7684\u4fee\u6539\u3002\n\u4e5d\u3001\u514d\u8d23\u4e0e\u8d54\u507f\u58f0\u660e\n1\u3001\u82e5ThinkSNS+\u5df2\u7ecf\u660e\u793a\u5176\u670d\u52a1\u63d0\u4f9b\u65b9\u5f0f\u53d1\u751f\u53d8\u66f4\u5e76\u63d0\u9192\u7528\u6237\u5e94\u5f53\u6ce8\u610f\u4e8b\u9879\uff0c\u7528\u6237\u672a\u6309\u8981\u6c42\u64cd\u4f5c\u6240\u4ea7\u751f\u7684\u4e00\u5207\u540e\u679c\u7531\u7528\u6237\u81ea\u884c\u627f\u62c5\u3002\n2\u3001\u7528\u6237\u660e\u786e\u540c\u610f\u5176\u4f7f\u7528ThinkSNS+\u6240\u5b58\u5728\u7684\u98ce\u9669\u5c06\u5b8c\u5168\u7531\u5176\u81ea\u5df1\u627f\u62c5\uff0c\u56e0\u5176\u4f7f\u7528ThinkSNS+\u800c\u4ea7\u751f\u7684\u4e00\u5207\u540e\u679c\u4e5f\u7531\u5176\u81ea\u5df1\u627f\u62c5\u3002\n3\u3001\u7528\u6237\u540c\u610f\u4fdd\u969c\u548c\u7ef4\u62a4ThinkSNS+\u53ca\u5176\u4ed6\u7528\u6237\u7684\u5229\u76ca\uff0c\u7531\u4e8e\u7528\u6237\u5728\u4f7f\u7528ThinkSNS+\u6709\u8fdd\u6cd5\u3001\u4e0d\u771f\u5b9e\u3001\u4e0d\u6b63\u5f53\u3001\u4fb5\u72af\u7b2c\u4e09\u65b9\u5408\u6cd5\u6743\u76ca\u7684\u884c\u4e3a\uff0c\u6216\u7528\u6237\u8fdd\u53cd\u672c\u534f\u8bae\u9879\u4e0b\u7684\u4efb\u4f55\u6761\u6b3e\u800c\u7ed9ThinkSNS+\u53ca\u4efb\u4f55\u5176\u4ed6\u7b2c\u4e09\u65b9\u9020\u6210\u635f\u5931\uff0c\u7528\u6237\u540c\u610f\u627f\u62c5\u7531\u6b64\u9020\u6210\u7684\u635f\u5bb3\u8d54\u507f\u8d23\u4efb\u3002\n\u5341\u3001\u9690\u79c1\u58f0\u660e\n1\u3001\u9002\u7528\u8303\u56f4\uff1a\n\uff081\uff09\u5728\u7528\u6237\u6ce8\u518cThinkSNS+\u8d26\u6237\u65f6\uff0c\u6839\u636e\u8981\u6c42\u63d0\u4f9b\u7684\u4e2a\u4eba\u6ce8\u518c\u4fe1\u606f\uff1b\n\uff082\uff09\u5728\u7528\u6237\u4f7f\u7528ThinkSNS+\uff0c\u6216\u8bbf\u95ee\u5176\u76f8\u5173\u7f51\u9875\u65f6\uff0cThinkSNS+\u81ea\u52a8\u63a5\u6536\u5e76\u8bb0\u5f55\u7684\u7528\u6237\u6d4f\u89c8\u5668\u4e0a\u7684\u670d\u52a1\u5668\u6570\u503c\uff0c\u5305\u62ec\u4f46\u4e0d\u9650\u4e8eIP\u5730\u5740\u7b49\u6570\u636e\u53ca\u7528\u6237\u8981\u6c42\u53d6\u7528\u7684\u7f51\u9875\u8bb0\u5f55\u3002\n2\u3001\u4fe1\u606f\u4f7f\u7528\uff1a\n\uff081\uff09ThinkSNS+\u4e0d\u4f1a\u5411\u4efb\u4f55\u4eba\u51fa\u552e\u6216\u51fa\u501f\u7528\u6237\u7684\u4e2a\u4eba\u4fe1\u606f\uff0c\u9664\u975e\u4e8b\u5148\u5f97\u5230\u7528\u6237\u7684\u8bb8\u53ef\u3002\n\uff082\uff09ThinkSNS+\u4ea6\u4e0d\u5141\u8bb8\u4efb\u4f55\u7b2c\u4e09\u65b9\u4ee5\u4efb\u4f55\u624b\u6bb5\u6536\u96c6\u3001\u7f16\u8f91\u3001\u51fa\u552e\u6216\u8005\u65e0\u507f\u4f20\u64ad\u7528\u6237\u7684\u4e2a\u4eba\u4fe1\u606f\u3002\u4efb\u4f55\u7528\u6237\u5982\u4ece\u4e8b\u4e0a\u8ff0\u6d3b\u52a8\uff0c\u4e00\u7ecf\u53d1\u73b0\uff0cThinkSNS+\u6709\u6743\u7acb\u5373\u7ec8\u6b62\u4e0e\u8be5\u7528\u6237\u7684\u670d\u52a1\u534f\u8bae\uff0c\u67e5\u5c01\u5176\u8d26\u53f7\u3002\n\uff083\uff09\u4e3a\u8fbe\u5230\u670d\u52a1\u7528\u6237\u7684\u76ee\u7684\uff0cThinkSNS+\u53ef\u80fd\u901a\u8fc7\u4f7f\u7528\u7528\u6237\u7684\u4e2a\u4eba\u4fe1\u606f\uff0c\u5411\u7528\u6237\u63d0\u4f9b\u670d\u52a1\uff0c\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u5411\u7528\u6237\u53d1\u51fa\u4ea7\u54c1\u548c\u670d\u52a1\u4fe1\u606f\uff0c\u6216\u8005\u4e0eThinkSNS+\u5408\u4f5c\u4f19\u4f34\u5171\u4eab\u4fe1\u606f\u4ee5\u4fbf\u4ed6\u4eec\u5411\u7528\u6237\u53d1\u9001\u6709\u5173\u5176\u4ea7\u54c1\u548c\u670d\u52a1\u7684\u4fe1\u606f\u3002\n3\u3001\u4fe1\u606f\u62ab\u9732\uff1a\u7528\u6237\u7684\u4e2a\u4eba\u4fe1\u606f\u5c06\u5728\u4e0b\u8ff0\u60c5\u51b5\u4e0b\u90e8\u5206\u6216\u5168\u90e8\u88ab\u62ab\u9732\uff1a\n\uff081\uff09\u7ecf\u7528\u6237\u540c\u610f\uff0c\u5411\u7b2c\u4e09\u65b9\u62ab\u9732\uff1b\n\uff082\uff09\u6839\u636e\u6cd5\u5f8b\u7684\u6709\u5173\u89c4\u5b9a\uff0c\u6216\u8005\u884c\u653f\u6216\u53f8\u6cd5\u673a\u6784\u7684\u8981\u6c42\uff0c\u5411\u7b2c\u4e09\u65b9\u6216\u8005\u884c\u653f\u3001\u53f8\u6cd5\u673a\u6784\u62ab\u9732\uff1b\n\uff083\uff09\u5982\u679c\u7528\u6237\u51fa\u73b0\u8fdd\u53cd\u4e2d\u56fd\u6709\u5173\u6cd5\u5f8b\u6216\u8005\u7f51\u7ad9\u653f\u7b56\u7684\u60c5\u51b5\uff0c\u9700\u8981\u5411\u7b2c\u4e09\u65b9\u62ab\u9732\uff1b\n\uff084\uff09\u4e3a\u63d0\u4f9b\u7528\u6237\u6240\u8981\u6c42\u7684\u4ea7\u54c1\u548c\u670d\u52a1\uff0c\u800c\u5fc5\u987b\u548c\u7b2c\u4e09\u65b9\u5206\u4eab\u7528\u6237\u7684\u4e2a\u4eba\u4fe1\u606f\uff1b\n\uff085\uff09\u5176\u5b83ThinkSNS+\u6839\u636e\u6cd5\u5f8b\u6216\u8005\u7f51\u7ad9\u653f\u7b56\u8ba4\u4e3a\u5408\u9002\u7684\u62ab\u9732\uff1b\n\uff086\uff09\u7528\u6237\u4f7f\u7528ThinkSNS+\u65f6\u63d0\u4f9b\u7684\u94f6\u884c\u8d26\u6237\u4fe1\u606f\uff0cThinkSNS+\u5c06\u4e25\u683c\u5c65\u884c\u76f8\u5173\u4fdd\u5bc6\u7ea6\u5b9a\u3002\n\u5341\u4e00\u3001\u5176\u4ed6\n1\u3001ThinkSNS+\u90d1\u91cd\u63d0\u9192\u7528\u6237\u6ce8\u610f\u672c\u534f\u8bae\u4e2d\u514d\u9664ThinkSNS+\u8d23\u4efb\u548c\u9650\u5236\u7528\u6237\u6743\u5229\u7684\u6761\u6b3e\uff0c\u8bf7\u7528\u6237\u4ed4\u7ec6\u9605\u8bfb\uff0c\u81ea\u4e3b\u8003\u8651\u98ce\u9669\u3002\u672a\u6210\u5e74\u4eba\u5e94\u5728\u6cd5\u5b9a\u76d1\u62a4\u4eba\u7684\u966a\u540c\u4e0b\u9605\u8bfb\u672c\u534f\u8bae\u3002\n2\u3001\u672c\u534f\u8bae\u7684\u6548\u529b\u3001\u89e3\u91ca\u53ca\u7ea0\u7eb7\u7684\u89e3\u51b3\uff0c\u9002\u7528\u4e8e\u4e2d\u534e\u4eba\u6c11\u5171\u548c\u56fd\u6cd5\u5f8b\u3002\u82e5\u7528\u6237\u548cThinkSNS+\u4e4b\u95f4\u53d1\u751f\u4efb\u4f55\u7ea0\u7eb7\u6216\u4e89\u8bae\uff0c\u9996\u5148\u5e94\u53cb\u597d\u534f\u5546\u89e3\u51b3\uff0c\u534f\u5546\u4e0d\u6210\u7684\uff0c\u7528\u6237\u540c\u610f\u5c06\u7ea0\u7eb7\u6216\u4e89\u8bae\u63d0\u4ea4ThinkSNS+\u4f4f\u6240\u5730\u6709\u7ba1\u8f96\u6743\u7684\u4eba\u6c11\u6cd5\u9662\u7ba1\u8f96\u3002\n3\u3001\u672c\u534f\u8bae\u7684\u4efb\u4f55\u6761\u6b3e\u65e0\u8bba\u56e0\u4f55\u79cd\u539f\u56e0\u65e0\u6548\u6216\u4e0d\u5177\u53ef\u6267\u884c\u6027\uff0c\u5176\u4f59\u6761\u6b3e\u4ecd\u6709\u6548\uff0c\u5bf9\u53cc\u65b9\u5177\u6709\u7ea6\u675f\u529b\u3002\n4\u3001\u672c\u534f\u8bae\u6700\u7ec8\u89e3\u91ca\u6743\u5f52\u667a\u58eb\u8f6f\u4ef6\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8\uff08\u7b80\u79f0\u201c\u667a\u58eb\u8f6f\u4ef6\u201d\uff09\u6240\u6709\uff0c\u5e76\u4e14\u4fdd\u7559\u4e00\u5207\u89e3\u91ca\u548c\u4fee\u6539\u7684\u6743\u529b\u3002\n5\u3001\u672c\u534f\u8bae\u4ece2008\u5e741\u67081\u65e5\u8d77\u9002\u7528\u3002", "showTerms": true, "fixed": "need" }, "wallet:cash": { "open": true }, "wallet:recharge": { "open": true }, "question:apply_amount": 200, "question:onlookers_amount": 100, "news:contribute": { "pay": true, "verified": true }, "news:pay_conyribute": 100, "feed": { "reward": true, "paycontrol": true, "items": [100, 500, 1000], "limit": 50 }, "checkin": true, "checkin:attach_balance": 10, "plus-appversion": { "open": true } };
+     TS.COMMON = { "installed": true, "routeName": "pc:feeds", "status": 1, "logo": null, "loginbg": null, "weibo": { "client_id": "3690191563", "client_secret": "278b2212b43ce359ee27e19dfd230313" }, "wechat": { "client_id": "wx183dc69dabad5f29", "client_secret": "1aee4dd5b6708e67d5e4d2ffa5d37a13" }, "qq": { "client_id": "101418557", "client_secret": "67d647556551c8e2c53f4ba315f87c93" }, "site_technical": "ThinkSNS+", "site_copyright": "Powered by ThinkSNS \u00a92017 ZhishiSoft All Rights Reserved.", "site_name": "ThinkSNS" };
+     // 转换比例处理
+     TS.BOOT['wallet:ratio'] = parseFloat(TS.BOOT['wallet:ratio'] / 100 / 100);
+     // 未读消息数量
+     TS.UNREAD = {};
+    </script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+   
+<script src="js/main.js" type="text/javascript"></script>
+<link rel="stylesheet" href="oxs/plus-component-pc/css/common.css">
+    <script src="oxs/plus-component-pc/js/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="oxs/plus-component-pc/cropper/cropper.min.css">
+   
+<title>创新海洋</title>
+
+
+
+  
+</head>
+
+<body>
+<div id="bodypage">
+ <div class="wrap">
+<div class="headmod">
+<div id="headmod">
+<div class="head1">
+<div class="pagemain">
+<div class="head">
+<div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+<div class="dhpic">
+<ul>
+<li class="arrow"></li>
+</ul>
+</div>
+<div class="g-header">
+<ul class="g-head-nav">
+<li><a href="#">首页</a></li>
+<li><a href="#">作品</a></li>
+<li><a href="#">文章</a></li>
+<li><a href="#">圈子</a></li>
+<li><a href="#">问答</a></li>
+</ul>
+
+</div>
+<div class="u-setting">
+<div class="dropdown">
+<div class="handle"><a href="#"><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">找伙伴</a></li>
+    
+    
+    <li><a style="border-bottom:none;" href="#">排行榜</a></li>
+    
+    
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="regmod" style="display:none;"><a onClick="javascript:showlgn()" href="#">登录</a>&nbsp;|&nbsp;<a href="#">注册</a></div>
+<div class="u-record">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><img src="images/xiaoheadpic.jpg" /></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+    <div class="sub-menu2">
+<div class="qiandaobtn"><a href="#"><img src="images/qiandaopic.png" />每日签到</a></div>
+<div class="qiandaotit3">+5积分</div>
+    </div>
+<div class="sub-menu3">
+    <ul>
+    <li><a href="#">我的作品</a></li>
+    <li><a href="#">我的文章</a></li>
+    <li><a href="#">我的收藏</a></li>
+    <li><a href="#" style="border-bottom:none;">我的关注</a></li>
+    </ul>
+</div>
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">去认证</a></li>
+    <li><a href="#">我的钱包</a></li>
+    <li><a href="#">账户设置</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">退出</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!--消息-->
+<div class="u-msg">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><span class="redhot"></span></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">我的通知</a></li>
+    <li><a href="#">我的评论</a></li>
+    <li><a href="#">给我点赞</a></li>
+    <li><a href="#">@我的</a></li>
+    <li><a style="border-bottom:none;" href="#">我的联系人</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--上传-->
+<div class="u-upload">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">上传作品</a></li>
+    <li><a href="#">发布文章</a></li>
+    <li><a href="#">发布问题</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">发布帖子</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="nav_list">
+<div class="nav_search">
+            <input class="nav_input" type="text" placeholder="输入关键词搜索" value="" id="head_search"/>
+            <a class="nav_search_icon">
+                <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sousuo"></use></svg>
+            </a>
+
+            <div class="head_search">
+                
+                <div class="history">
+                    <p>历史记录</p>
+                    <ul></ul>
+                    <div class="clear">
+                        <a href="javascript:;" onclick="delHistory('all')">清空历史记录</a>
+                    </div>
+                </div>
+
+                
+                <div class="search_types">
+                    <ul>
+                        <li type="1"><span>与<span class="keywords"></span>相关的动态</span></li>
+                        <li type="2"><span>与<span class="keywords"></span>相关的问答</span></li>
+                        <li type="3"><span>与<span class="keywords"></span>相关的文章</span></li>
+                        <li type="4"><span>与<span class="keywords"></span>相关的用户</span></li>
+                        <li type="5"><span>与<span class="keywords"></span>相关的圈子</span></li>
+                        <li type="6"><span>与<span class="keywords"></span>相关的话题</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+<div class="designbanner">
+    
+<div class="pagemain1">
+    <div class="designbanner1">
+    <div class="changefengmianmod"><div  id="J-image-preview" class="changefengmian"><a href="#">更换封面</a></div></div>
+        <div class="changefengmianmod">
+            <div class="designermod2">
+            <div class="designermod2pic">
+            <img src="images/headpic74x74.jpg" />
+            </div>
+               <div class="designermod2_1">
+            <div class="designermod2tit1">腾讯视频天下驰骋</div>
+            <div class="designermod2tit2">兰奕望设计婚纱创始人主创设计师 兰奕望设计婚纱创婚纱创始人主创设计师 兰奕望始人主创设......</div>
+            <div class="designermod2tit3">北京&nbsp;|&nbsp;设计师</div>
+                <div class="protag1"><li>时尚漫游</li><li>明天的故事</li></div>
+                <div class="tongji"><div class="tongji1">1957454<br>人气</div><div class="tongji2">1957454<br>粉丝</div><div class="tongji3">1957454<br>关注</div><div class="tongji4">1957454<br>积分</div></div>
+            </div>
+                </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="designernavmod">
+<div class="pagemain1">
+<div class="designernav">
+    <ul>
+    <li><a href="myworksindex.html">作品</a></li>
+    <li><a href="myarticleindex.html">文章</a></li>
+    <li><a href="myweiba.html">圈子</a></li>
+    <li><a href="mywenda.html">问答</a></li>
+    <li><a href="shoucangmyworks.html">收藏</a></li>
+    <li class="designernavli"><a href="tuijianmyworks.html">推荐</a>
+        <ul style="margin-left:-20px;"><li class="designernavli4"><a href="tuijianmyworks.html">作品</a></li><li><a href="tuijianmyarticle.html">文章</a></li></ul>
+    </li>
+    <li><a href="myinfo.html">资料</a></li>
+    <li><a href="myguanzhu.html">我的关注</a></li>
+    <li><a href="myfensi.html">我的粉丝</a></li>
+    
+    </ul></div>
+<div class="designermod3"><div class="worksbtn2"><a href="#"><img src="images/dashang1.png" />打赏</a></div><div class="worksbtn2"><a href="#"><img src="images/jia1.png" />关注</a></div><div class="worksbtn2"><a href="#"><img src="images/chat1.png" />聊天</a></div></div>
+</div>
+</div>
+<div class="designernavmod1">
+        <div class="pagemain1">
+            <div class="designernav1">&nbsp;</div>
+        </div>
+    </div>  
+<div class="indexmod">
+<div class="pagemain1">
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计……</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4" style="margin-right:0;">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+ <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计……</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+
+    <div class="blogmod4" style="margin-right:0;">
+<a href="newshow.html"><img src="images/xiaotu.jpg"/></a>
+<div class="blogmod4tit1"><a href="#">徐州工业设计中心-农用机械甘蔗机外观结构设计</a><div class="worksmodtit4_2"><div class="guanli"><div class="guanlimod"><div class="guanlimod1"><li><a href="#">编辑</a></li><li><a href="#">删除</a></li></div></div>管理</a></div></div></div>
+<div class="blogmod4tit3"><li style="width:76px;"><img src="images/biao1.png" />32</li><li style="width:76px;"><img src="images/biao2.png" />0</li><li style="width:76px; border-right:none;"><img src="images/biao3.png" />14</li></div>
+</div>
+</div>
+</div>
+
+       
+    </div>
+
+    <!-- footer -->
+    
+
+    <script src="oxs/plus-component-pc/js/common.js"></script>
+    <script src="oxs/plus-component-pc/js/lodash.js"></script>
+    <script src="oxs/plus-component-pc/js/font/iconfont.js"></script>
+    <script src="oxs/plus-component-pc/js/jquery.lazyload.min.js"></script>
+    <script src="oxs/plus-component-pc/js/jquery.cookie.js"></script>
+    <script src="oxs/plus-component-pc/layer/layer.js"></script>
+    <script src="oxs/plus-component-pc/js/dexie.js"></script>
+    <script src="oxs/plus-component-pc/js/module.message.js"></script>
+    <script src="oxs/plus-component-pc/cropper/cropper.min.js"></script>
+    <script src="oxs/plus-component-pc/js/module.news.js"></script>
+    <script src="oxs/plus-component-pc/js/md5.min.js"></script>
+    <script type="text/javascript">
+        var selBox = $('#J-select-tags');
+
+        $('.release_tags').on('click', '>*', function (e) {
+            e.stopPropagation();
+            $('#J-tag-box').toggle();
+        });
+
+        $('#J-tag-box dd').on('click', function (e) {
+            e.stopPropagation();
+            var tag_id = $(this).data('id');
+            var tag_name = $(this).text();
+            if (selBox.find('li').hasClass('tag_' + tag_id)) {
+                noticebox('标签已存在', 0); return;
+            }
+
+            if (selBox.find('li').length > 4) {
+                noticebox('标签最多五个', 0); return;
+            }
+
+            selBox.append('<li class="tag_' + tag_id + '" data-id="' + tag_id + '">' + tag_name + '</li>');
+            if (selBox.find('li').length > 0) {
+                $('.release_tags label').hide();
+            }
+        });
+
+        selBox.on('click', 'li', function () {
+            $(this).remove();
+            if (selBox.find('li').length == 0) {
+                $('.release_tags label').show();
+            }
+        });
+
+
+        $('#J-image-preview').on('click', function () {
+            var html = '<div id="model">'
+                + '<div class="avatar-container" id="crop-avatar">'
+                + '<div class="avatar-upload">'
+                + '<input type="hidden" class="avatar-src" name="avatar_src">'
+                + '<input type="file" class="avatar-input" id="avatarInput" name="avatar_file">'
+                + '<label class="avatar-file" for="avatarInput">选择图片</label>'
+                + '</div>'
+                + '<div class="avatar-wrapper"></div>'
+                + '<div class="save-btn"><span>上传完成记得点击保存按钮</span><button type="button" class="btn btn-primary avatar-save">完成</button></div>'
+                + '</div></div>';
+            ly.loadHtml(html, '上传封面', '1150px', '500px;');
+            $(function () {
+                'use strict';
+                var console = window.console || { log: function () { } };
+                function CropAvatar($element) {
+                    this.$container = $element;
+                    this.$avatarInput = this.$container.find('.avatar-input');
+                    this.$avatarWrapper = this.$container.find('.avatar-wrapper');
+                    this.$avatarPreview = this.$container.find('.avatar-preview');
+                    this.$avatarSave = this.$container.find('.avatar-save');
+                    this.init();
+                }
+                // base64
+                function dataURLtoBlob(dataurl) {
+                    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+                    while (n--) {
+                        u8arr[n] = bstr.charCodeAt(n);
+                    }
+                    return new Blob([u8arr], { type: mime });
+                }
+                CropAvatar.prototype = {
+                    constructor: CropAvatar,
+                    support: {
+                        fileList: !!$('<input type="file">').prop('files'),
+                        blobURLs: !!window.URL && URL.createObjectURL,
+                        formData: !!window.FormData
+                    },
+                    init: function () {
+                        this.support.datauri = this.support.fileList && this.support.blobURLs;
+                        this.fileUpload = {};
+                        this.addListener();
+                    },
+                    addListener: function () {
+                        this.$avatarInput.on('change', $.proxy(this.change, this));
+                        this.$avatarSave.on('click', $.proxy(this.click, this));
+                    },
+                    click: function () {
+                        var croppedCanvas = this.$img.cropper('getCroppedCanvas');
+                        var blob = dataURLtoBlob(croppedCanvas.toDataURL());
+                        blob.name = this.fileUpload.origin_filename;
+                        this.$avatarSave.text('上传中...');
+                        fileUpload.init(blob, function (img, f, file_id) {
+                            $('#subject-image').val(file_id);
+                            $('#J-image-preview').attr('src', '/api/v2/files/' + file_id + '?w=230&h=163');
+                            layer.closeAll();
+                        });
+                    },
+                    change: function () {
+                        var files, file;
+                        if (this.support.datauri) {
+                            files = this.$avatarInput.prop('files');
+                            if (files.length > 0) {
+                                file = files[0];
+                                this.fileUpload.mime_type = file.type;
+                                this.fileUpload.origin_filename = file.name;
+                                this.fileUpload.hash = '123456' + file.name;
+                                if (this.isImageFile(file)) {
+                                    if (this.url) {
+                                        URL.revokeObjectURL(this.url); // Revoke the old one
+                                    }
+                                    this.url = URL.createObjectURL(file);
+                                    this.startCropper();
+                                }
+                            }
+                        } else {
+                            file = this.$avatarInput.val();
+                            if (this.isImageFile(file)) {
+                                this.syncUpload();
+                            }
+                        }
+                    },
+                    startCropper: function () {
+                        var _this = this;
+                        if (this.active) {
+                            this.$img.cropper('replace', this.url);
+                        } else {
+                            this.$img = $('<img src="' + this.url + '">');
+                            this.$avatarWrapper.empty().html(this.$img);
+                            this.$img.cropper({
+                                aspectRatio: 3 / 2, //设置剪裁容器的比例
+                                viewMode: 1,
+                                preview: this.$avatarPreview.selector, //添加额外的元素（容器）的预览
+                            });
+                            this.active = true;
+                        }
+                    },
+                    stopCropper: function () {
+                        if (this.active) {
+                            this.$img.cropper('destroy');
+                            this.$img.remove();
+                            this.active = false;
+                        }
+                    },
+                    isImageFile: function (file) {
+                        if (file.type) {
+                            return /^image\/\w+$/.test(file.type);
+                        } else {
+                            return /\.(jpg|jpeg|png|gif)$/.test(file);
+                        }
+                    }
+                };
+                return new CropAvatar($('#crop-avatar'));
+            });
+        });
+        // 资讯分类点击
+        $('.release_cates span').on('click', function (e) {
+            if ($(this).hasClass('current')) {
+                $('#cate_id').val('');
+                $(this).removeClass('current');
+            } else {
+                $(this).siblings().removeClass('current');
+                $(this).addClass('current');
+                var cid = $(this).data('cid');
+                $('#cate_id').val(cid);
+            }
+        });
+    </script>
+<div class="copyrightmod"><div class="pagemain"><div class="copyright1"><a href="#" style="padding-left:0;">关于我们</a>&nbsp;| &nbsp;<a href="#">加入超动力</a>&nbsp;|&nbsp;<a href="#">用户协议</a>&nbsp;|&nbsp;<a href="#">企业服务</a>&nbsp;|&nbsp;<a href="#">帮助中心</a>&nbsp;|&nbsp;<a href="#">联系我们</a></div><div class="copyright2">Copyright © 2018-2018 DynamicsX.CN 京ICP备14028320号</div></div></div></div></body>
+</html>

@@ -1,0 +1,10 @@
+.pselfix{ float:left; position:relative;}
+.selectbox {
+	BORDER-BOTTOM: #cbcbcb 1px solid; BORDER-LEFT: #cbcbcb 1px solid; LINE-HEIGHT: 37px; PADDING-LEFT: 4px; WIDTH: 180px; BACKGROUND: url(../images/dot.gif) #fff no-repeat right 13px; FLOAT: left; HEIGHT: 37px; BORDER-TOP: #cbcbcb 1px solid; BORDER-RIGHT: #cbcbcb 1px solid; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; font-size:14px; color:#606265;
+}
+.selectchildbox {
+	Z-INDEX: 1000; BORDER: #7595ca 1px solid; POSITION: absolute; left:0; top:0; MARGIN-TOP: 40px; WIDTH: 184px;  height:100px; overflow:auto; font-size:14px;
+}
+.selectchildbox LI {
+	LINE-HEIGHT: 22px; PADDING-LEFT: 4px; HEIGHT: 27px
+}

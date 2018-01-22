@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/*-- 页面辅助文字 --*/
+/*-- 页面辅助文字 --*/
+/* -- 按钮 -- */
+/*-- 文本截取，超出一行行加省略号 --*/
+/*-- 文本截取，超出两行加省略号 --*/
+/*-- 圆角 --*/
+/*-- inline-block --*/
+/*-- 透明度 --*/
+/*-- 一级下拉菜单样式 --*/
+/*-- 导航下拉菜单原始样式 --*/
+/*-- 导航下拉菜单hover样式 --*/
+/*-- new标记 --*/
+/*-- 分隔符 --*/
+/*-- 按钮通用 --*/
+/*-- 卡片透明度 --*/
+/*-- 小三角朝下投影效果 --*/
+.city-plug-parent {
+  position: relative; }
+
+.js-tab-city {
+  cursor: pointer; }
+
+.city-panel-layer {
+  width: 363px;
+  line-height: normal;
+  background: #fff;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  top: 58px;
+  z-index: 3;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px; }
+  .city-panel-layer .city-title {
+    padding: 20px 30px; }
+  .city-panel-layer .city-content {
+    height: 234px; }
+    .city-panel-layer .city-content .city-city-list,
+    .city-panel-layer .city-content .city-province-list {
+      overflow: hidden;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    .city-panel-layer .city-content .province-scroll-div,
+    .city-panel-layer .city-content .city-scroll-div {
+      height: 234px;
+      overflow: hidden; }
+    .city-panel-layer .city-content .city-province-list {
+      width: 148px;
+      margin-top: 11px;
+      position: relative; }
+      .city-panel-layer .city-content .city-province-list dl dt {
+        height: 20px;
+        line-height: 20px;
+        margin: 10px 0;
+        text-indent: 30px;
+        color: #999999;
+        background: #fbfbfb;
+        font-size: 12px; }
+      .city-panel-layer .city-content .city-province-list dl > dd {
+        cursor: pointer;
+        text-indent: 30px;
+        height: 32px;
+        line-height: 32px; }
+        .city-panel-layer .city-content .city-province-list dl > dd a {
+          display: block;
+          padding-right: 20px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden; }
+          .city-panel-layer .city-content .city-province-list dl > dd a:hover {
+            background: #f2f2f2; }
+          .city-panel-layer .city-content .city-province-list dl > dd a.active {
+            background: #f2f2f2; }
+    .city-panel-layer .city-content .city-city-list {
+      width: 215px;
+      padding: 15px 0px 20px 20px; }
+      .city-panel-layer .city-content .city-city-list .city-children3 {
+        display: inline-block;
+        cursor: pointer; }
+        .city-panel-layer .city-content .city-city-list .city-children3 span,
+        .city-panel-layer .city-content .city-city-list .city-children3 a {
+          padding: 2px 6px;
+          margin: 5px;
+          display: inline-block; }
+        .city-panel-layer .city-content .city-city-list .city-children3 a {
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px; }
+          .city-panel-layer .city-content .city-city-list .city-children3 a:hover {
+            background: #f2f2f2; }
+          .city-panel-layer .city-content .city-city-list .city-children3 a.active {
+            background: #f2f2f2; }
+      .city-panel-layer .city-content .city-city-list ul {
+        width: 164px; }
+        .city-panel-layer .city-content .city-city-list ul > li {
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          display: inline-block; }
+
+.city-layer-covers {
+  width: 660px;
+  position: absolute;
+  background: #fff;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  top: 34px; }
+  .city-layer-covers:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 78px;
+    box-sizing: border-box;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff #ffffff;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(132deg);
+    transform-origin: 0 0;
+    transform: rotate(132deg);
+    box-shadow: -1px 1px 0 rgba(0, 0, 0, 0.05); }
+  .city-layer-covers .city-title {
+    padding: 18px 28px; }
+  .city-layer-covers .city-content {
+    height: 338px; }
+    .city-layer-covers .city-content .country-tab-box {
+      width: 154px;
+      height: 100%;
+      padding-top: 18px;
+      border-right: 1px solid #eeeeee;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    .city-layer-covers .city-content .cin-div,
+    .city-layer-covers .city-content .country-div {
+      height: 42px;
+      line-height: 42px;
+      text-indent: 28px;
+      cursor: pointer; }
+      .city-layer-covers .city-content .cin-div:hover,
+      .city-layer-covers .city-content .country-div:hover {
+        background: #f2f2f2; }
+      .city-layer-covers .city-content .cin-div.current,
+      .city-layer-covers .city-content .country-div.current {
+        background: #f2f2f2; }
+  .city-layer-covers .city-panel-covers {
+    width: 445px;
+    padding: 28px; }
+  .city-layer-covers .cin-city-cover .hot-city-box > ul {
+    padding-left: 70px;
+    *zoom: 1; }
+    .city-layer-covers .cin-city-cover .hot-city-box > ul:after {
+      content: "";
+      display: table; }
+    .city-layer-covers .cin-city-cover .hot-city-box > ul:after {
+      clear: both; }
+    .city-layer-covers .cin-city-cover .hot-city-box > ul > li {
+      float: left;
+      cursor: pointer;
+      padding: 0 6px;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px; }
+      .city-layer-covers .cin-city-cover .hot-city-box > ul > li:hover {
+        background: #f2f2f2; }
+      .city-layer-covers .cin-city-cover .hot-city-box > ul > li.current {
+        background: #f2f2f2; }
+  .city-layer-covers .cin-city-cover .city-pc-title {
+    margin-top: 18px;
+    *zoom: 1; }
+    .city-layer-covers .cin-city-cover .city-pc-title:after {
+      content: "";
+      display: table; }
+    .city-layer-covers .cin-city-cover .city-pc-title:after {
+      clear: both; }
+    .city-layer-covers .cin-city-cover .city-pc-title > span {
+      width: 70px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      display: inline-block;
+      float: left;
+      background: #ffffff;
+      border: 1px solid #bbbbbb;
+      cursor: pointer; }
+      .city-layer-covers .cin-city-cover .city-pc-title > span:hover {
+        background: #ffd100;
+        border: 1px solid #ffd100; }
+      .city-layer-covers .cin-city-cover .city-pc-title > span.city-select {
+        background: #ffd100;
+        border: 1px solid #ffd100; }
+    .city-layer-covers .cin-city-cover .city-pc-title .city-province-title {
+      border-right: 0;
+      border-radius: 4px 0 0 4px; }
+      .city-layer-covers .cin-city-cover .city-pc-title .city-province-title:hover {
+        border-right: 0; }
+      .city-layer-covers .cin-city-cover .city-pc-title .city-province-title.city-select {
+        border-right: 0; }
+    .city-layer-covers .cin-city-cover .city-pc-title .city-city-title {
+      border-left: 0;
+      border-radius: 0 4px 4px 0; }
+      .city-layer-covers .cin-city-cover .city-pc-title .city-city-title:hover {
+        border-left: 0; }
+      .city-layer-covers .cin-city-cover .city-pc-title .city-city-title.city-select {
+        border-left: 0; }
+  .city-layer-covers .cin-city-cover .city-list .city-city-letter,
+  .city-layer-covers .cin-city-cover .city-list .city-province-letter {
+    margin-top: 20px;
+    *zoom: 1; }
+    .city-layer-covers .cin-city-cover .city-list .city-city-letter:after,
+    .city-layer-covers .cin-city-cover .city-list .city-province-letter:after {
+      content: "";
+      display: table; }
+    .city-layer-covers .cin-city-cover .city-list .city-city-letter:after,
+    .city-layer-covers .cin-city-cover .city-list .city-province-letter:after {
+      clear: both; }
+    .city-layer-covers .cin-city-cover .city-list .city-city-letter li,
+    .city-layer-covers .cin-city-cover .city-list .city-province-letter li {
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #666666;
+      background: #eeeeee;
+      border-radius: 2px;
+      float: left; }
+  .city-layer-covers .cin-city-cover .city-list .city-scroll-div {
+    margin-top: 16px; }
+    .city-layer-covers .cin-city-cover .city-list .city-scroll-div dl dt {
+      font-weight: 800;
+      float: left; }
+    .city-layer-covers .cin-city-cover .city-list .city-scroll-div dl dd {
+      margin-left: 40px;
+      white-space: normal; }
+      .city-layer-covers .cin-city-cover .city-list .city-scroll-div dl dd li {
+        display: inline-block;
+        list-style: none;
+        cursor: pointer;
+        padding: 0 4px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px; }
+        .city-layer-covers .cin-city-cover .city-list .city-scroll-div dl dd li:hover {
+          background: #f2f2f2; }
+  .city-layer-covers .city-sub-box {
+    padding: 20px 30px;
+    *zoom: 1; }
+    .city-layer-covers .city-sub-box:after {
+      content: "";
+      display: table; }
+    .city-layer-covers .city-sub-box:after {
+      clear: both; }
+  .city-layer-covers .btn-grey-current {
+    min-width: 64px;
+    padding: 0 20px;
+    height: 24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px; }

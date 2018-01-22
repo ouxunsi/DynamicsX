@@ -1,0 +1,461 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+    
+    <script src="js/main.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="oxs/plus-component-pc/css/common.css">
+<link href="css/style.css" rel="stylesheet" type="text/css" /> 
+
+<link rel="stylesheet" href="css/main.min.css">
+<script>
+
+    function addLinkCss(linkUrl) {
+        var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = linkUrl;
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }
+   
+    </script>
+
+    <link rel="stylesheet" href="css/city-city.css">
+    <link rel="stylesheet" href="css/seekResultCom.css">
+
+<title>创新海洋</title>
+</head>
+
+<body>
+<div id="bodypage">
+<div class="headmod">
+<div id="headmod">
+<div class="head1">
+<div class="pagemain">
+<div class="head">
+<div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+<div class="dhpic">
+<ul>
+<li class="arrow"></li>
+</ul>
+</div>
+<div class="g-header">
+<ul class="g-head-nav">
+<li><a href="#">首页</a></li>
+<li><a href="#">作品</a></li>
+<li><a href="#">文章</a></li>
+<li><a href="#">圈子</a></li>
+<li><a href="#">问答</a></li>
+</ul>
+
+</div>
+<div class="u-setting">
+<div class="dropdown">
+<div class="handle"><a href="#"><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">找伙伴</a></li>
+    
+    
+    <li><a style="border-bottom:none;" href="#">排行榜</a></li>
+    
+    
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="regmod" style="display:none;"><a onClick="javascript:showlgn()" href="#">登录</a>&nbsp;|&nbsp;<a href="#">注册</a></div>
+<div class="u-record">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><img src="images/xiaoheadpic.jpg" /></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+    <div class="sub-menu2">
+<div class="qiandaobtn"><a href="#"><img src="images/qiandaopic.png" />每日签到</a></div>
+<div class="qiandaotit3">+5积分</div>
+    </div>
+<div class="sub-menu3">
+    <ul>
+    <li><a href="#">我的作品</a></li>
+    <li><a href="#">我的文章</a></li>
+    <li><a href="#">我的收藏</a></li>
+    <li><a href="#" style="border-bottom:none;">我的关注</a></li>
+    </ul>
+</div>
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">去认证</a></li>
+    <li><a href="#">我的钱包</a></li>
+    <li><a href="#">账户设置</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">退出</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!--消息-->
+<div class="u-msg">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"><span class="redhot"></span></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">我的通知</a></li>
+    <li><a href="#">我的评论</a></li>
+    <li><a href="#">给我点赞</a></li>
+    <li><a href="#">@我的</a></li>
+    <li><a style="border-bottom:none;" href="#">我的联系人</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--上传-->
+<div class="u-upload">
+<div class="dropdown">
+<div class="handle"><a href="#"><i class="ico-urecord"></i><b class="caret"></b></a></div>
+<div class="panel">
+<div class="content">
+<div class="sub-menu1">
+    <ul>
+    <li><a href="#">上传作品</a></li>
+    <li><a href="#">发布文章</a></li>
+    <li><a href="#">发布问题</a></li>
+    
+    <li><a style="border-bottom:none;" href="#">发布帖子</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="nav_list">
+<div class="nav_search">
+            <input class="nav_input" type="text" placeholder="输入关键词搜索" value="" id="head_search"/>
+            <a class="nav_search_icon">
+                <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sousuo"></use></svg>
+            </a>
+
+            <div class="head_search">
+                
+                <div class="history">
+                    <p>历史记录</p>
+                    <ul></ul>
+                    <div class="clear">
+                        <a href="javascript:;" onclick="delHistory('all')">清空历史记录</a>
+                    </div>
+                </div>
+
+                
+                <div class="search_types">
+                    <ul>
+                        <li type="1"><span>与<span class="keywords"></span>相关的动态</span></li>
+                        <li type="2"><span>与<span class="keywords"></span>相关的问答</span></li>
+                        <li type="3"><span>与<span class="keywords"></span>相关的文章</span></li>
+                        <li type="4"><span>与<span class="keywords"></span>相关的用户</span></li>
+                        <li type="5"><span>与<span class="keywords"></span>相关的圈子</span></li>
+                        <li type="6"><span>与<span class="keywords"></span>相关的话题</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+<div class="zhaorenmod">
+<div class="pagemain1">
+    
+    <div class="parents-nodes screening-condition-box">
+                <input type="hidden" id="searchData" recommend="1" professionid="0" sort="0">
+                <div class="screening-condition">
+                    <div class="zhaorentit2">找朋友</div>
+                    <div class="condition">
+                                                
+                        <div class="filter-wrap">
+                            <div class="filter-selected">
+                                <span class="item-field" data-type="field">不限级别</span>
+                                <div class="select-bigwrap select-scroll-box condition-result-field hide">
+                                    <ul class="select-box">
+                                        <li class="">
+                                            <a href="http://www.ouxunsi.com.cn/designer?recommend=-1&city=-1&professionId=0&sort=0" z-st="desinger_filter_recommend_0">不限级别</a>
+                                        </li>
+                                        <li class="current"><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=0&sort=0" z-st="desinger_filter_recommend_1">推荐设计师</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-wrap">
+                            <div class="filter-selected">
+                                <span class="item-profession" data-type="profession">不限职业</span>
+                                <div class="select-bigwrap select-scroll-box condition-result-profession hide">
+                                    <ul class="select-box">
+                                        <li class="current"><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=0&sort=0" z-st="desinger_filter_profession">不限职业</a></li>
+
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=1&sort=0" z-st="desinger_filter_profession_1">平面设计师</a></li>
+
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=2&sort=0" z-st="desinger_filter_profession_2">插画师</a></li>
+
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=3&sort=0" z-st="desinger_filter_profession_3">三维设计师</a></li>
+
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=4&sort=0" z-st="desinger_filter_profession_4">网页设计师</a></li>
+
+                                      
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="h-city-project-covers search-city-covers">
+                            <div class="city-plug-parent js-tab-city">
+                                <span class="cur-city-select" data-code="-1" data-path="">不限城市</span>
+                                <i class="kongxin-arrow ml-4"></i>
+                                <div class="city-panel-layer hide">
+                                    <div class="filter-all-city">
+                                        <a href="javascript:;" data-code="-1" class="link">不限城市</a>
+                                    </div>
+                                    <div class="radio city-title js-city-radio">
+                                        <label for="radio_0" class="radio-0 mr-30"><input type="radio" name="city-radio" id="radio_0" value="cn" checked="checked" class="">中国</label>
+
+                                        <label for="radio_1" class="radio-1"><input type="radio" name="city-radio" id="radio_1" value="en" class="">其他国家和地区 </label>
+                                    </div>
+                                    <div class="js-city-covers">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="condition seek-sort-box right">
+                        <span class="title">排序：</span>
+
+                        <div class="filter-wrap"  style="margin:0;">
+                            <div class="filter-selected">
+                                <span class="item-sort" data-type="sort">人气最多</span>
+                                <div class="select-bigwrap select-scroll-box hide">
+                                    <ul class="select-box">
+                                        <li class="current"><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=0&sort=0" z-st="designer_sort_popularity">人气最多</a></li>
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=0&sort=3" z-st="desinger_sort_fans">粉丝最多</a></li>
+                                        <li class=""><a href="http://www.ouxunsi.com.cn/designer?recommend=1&city=-1&professionId=0&sort=1" z-st="desinger_sort_products">作品最多</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    
+
+
+
+
+</div>
+<div class="blogmod3">
+<div class="pagemain1">
+<div class="zhaorenlist">
+<div class="zhaorenmod1">符合：4859341 名</div>
+<div class="designmod0">
+<div class="designmod1">
+<div class="designpic"><img src="images/designer.jpg" /></div>
+<div class="designmod1_1">
+<div class="designmod1tit1"><a href="#">明明</a></div>
+<div class="designmod1tit2">微博/公众号众号咸咸鱼中下游咸鱼插画课程中下游插画课程咨询咨询微信号...</div>
+<div class="designmod1tit3">北京<span class="designmod1tit4">|</span> 绘图师</div>
+<div class="guanzhubtn"><div class="aboutauthbtn1"><a href="#">关注</a></div><div class="designmod1_2"><div class="zxmod2tit4liulan"><img src="images/biao1.png">1414</div><div class="zxmod2tit4zan"><img src="images/biao2.png">1441</div><div class="zxmod2tit4shoucang"><img src="images/biao3.png">1441</div></div></div>
+
+</div>
+<div class="designmod1_3"><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="viewzuozhe"><a></a></div></div>
+</div>
+
+  <div class="designmod1">
+<div class="designpic"><img src="images/designer.jpg" /></div>
+<div class="designmod1_1">
+<div class="designmod1tit1"><a href="#">明明</a></div>
+<div class="designmod1tit2">微博/公众号咸鱼中下游 插画课程咸鱼中下游插画课程咨询咨询微信号...</div>
+<div class="designmod1tit3">北京<span class="designmod1tit4">|</span> 绘图师</div>
+<div class="guanzhubtn"><div class="aboutauthbtn1"><a href="#">关注</a></div><div class="designmod1_2"><div class="zxmod2tit4liulan"><img src="images/biao1.png">1414</div><div class="zxmod2tit4zan"><img src="images/biao2.png">1441</div><div class="zxmod2tit4shoucang"><img src="images/biao3.png">1441</div></div></div>
+
+</div>
+<div class="designmod1_3"><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="viewzuozhe"><a></a></div></div>
+</div>
+    <div class="designmod1">
+<div class="designpic"><img src="images/designer.jpg" /></div>
+<div class="designmod1_1">
+<div class="designmod1tit1"><a href="#">明明</a></div>
+<div class="designmod1tit2">微博/公众号咸鱼中下游 插画课程咸鱼中下游插画课程咨询咨询微信号...</div>
+<div class="designmod1tit3">北京<span class="designmod1tit4">|</span> 绘图师</div>
+<div class="guanzhubtn"><div class="aboutauthbtn1"><a href="#">关注</a></div><div class="designmod1_2"><div class="zxmod2tit4liulan"><img src="images/biao1.png">1414</div><div class="zxmod2tit4zan"><img src="images/biao2.png">1441</div><div class="zxmod2tit4shoucang"><img src="images/biao3.png">1441</div></div></div>
+
+</div>
+<div class="designmod1_3"><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="viewzuozhe"><a></a></div></div>
+</div>
+    <div class="designmod1">
+<div class="designpic"><img src="images/designer.jpg" /></div>
+<div class="designmod1_1">
+<div class="designmod1tit1"><a href="#">明明</a></div>
+<div class="designmod1tit2">微博/公众号咸鱼中下游 插画课程咸鱼中下游插画课程咨询咨询微信号...</div>
+<div class="designmod1tit3">北京<span class="designmod1tit4">|</span> 绘图师</div>
+<div class="guanzhubtn"><div class="aboutauthbtn1"><a href="#">关注</a></div><div class="designmod1_2"><div class="zxmod2tit4liulan"><img src="images/biao1.png">1414</div><div class="zxmod2tit4zan"><img src="images/biao2.png">1441</div><div class="zxmod2tit4shoucang"><img src="images/biao3.png">1441</div></div></div>
+
+</div>
+<div class="designmod1_3"><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="viewzuozhe"><a></a></div></div>
+</div>
+    <div class="designmod1">
+<div class="designpic"><img src="images/designer.jpg" /></div>
+<div class="designmod1_1">
+<div class="designmod1tit1"><a href="#">明明</a></div>
+<div class="designmod1tit2">微博/公众号咸鱼中下游 插画课程咸鱼中下游插画课程咨询咨询微信号...</div>
+<div class="designmod1tit3">北京<span class="designmod1tit4">|</span> 绘图师</div>
+<div class="guanzhubtn"><div class="aboutauthbtn1"><a href="#">关注</a></div><div class="designmod1_2"><div class="zxmod2tit4liulan"><img src="images/biao1.png">1414</div><div class="zxmod2tit4zan"><img src="images/biao2.png">1441</div><div class="zxmod2tit4shoucang"><img src="images/biao3.png">1441</div></div></div>
+
+</div>
+<div class="designmod1_3"><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="designworks"><a href="#"><img src="images/workspic.jpg" /></a></div><div class="viewzuozhe"><a></a></div></div>
+</div>  
+</div>
+
+<div class="zxpagemod">
+<div class="zxpage">
+<a class="prev"></a>
+<a href="#">1</a>
+<a href="#">2</a>
+<a class="current" href="#">3</a>
+<a href="#">4</a>
+<a href="#">…</a>
+<a href="#">99</a>
+<a href="#">100</a>
+<a class="next" href="#"></a>
+</div>
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+ <script>
+     gogoupDomain = 'gogoup.com';
+     hellorfDomain = 'hellorf.com';
+
+     passportDomain = 'passport.ouxunsi.com.cn';
+     staticDomain = 'static.ouxunsi.cn/git_z';
+
+     zMyDomain = 'my.ouxunsi.com.cn';
+     zMainDomain = 'www.ouxunsi.com.cn';
+     zRootDomain = 'ouxunsi.com.cn';
+
+     oldRootDomain = 'old.ouxunsi.com.cn';
+
+     appId = '1006';
+
+     zUploadDomain = 'upload.ouxunsi.com.cn';
+    </script>
+
+
+
+    <script src="js/messagesWeb.js"></script>
+
+
+    <script src="js/libs.min.js"></script>
+
+
+   
+
+
+
+
+
+
+    
+    <!-- start Dplus -->
+    <script src="js/statistics.js"></script>
+
+    <script type="text/javascript" src="js/zcity.js"></script>
+    
+  
+
+
+    <script>
+        $('.filter-all-city a').on('click', function () {
+            var _this = $(this);
+            $('.cur-city-select').html(_this.html())
+            window.location = "designer?recommend=" + $('#searchData').attr('recommend') + "&city=" + _this.attr('data-code') + "&professionId=" + $('#searchData').attr('professionId') + "&sort=" + $('#searchData').attr('sort')
+        })
+        $.city({
+            Clickcb: function (tcity) {
+                window.location.href = window.location = "designer?recommend=" + $('#searchData').attr('recommend') + "&city=" + tcity.attr('data-code') + "&professionId=" + $('#searchData').attr('professionId') + "&sort=" + $('#searchData').attr('sort');
+            }
+        })
+        // function citySelectClick(selectEle){
+
+        //     if($('.city-picker-dropdown').is(':visible') && selectEle.parents('.city').length){
+        //         window.location = "designer?recommend=" + $('#searchData').attr('recommend') + "&city=" + selectEle.attr('data-code') + "&professionId=" + $('#searchData').attr('professionId') + "&sort=" + $('#searchData').attr('sort')
+        //     }
+
+        // }
+        // $(function () {
+        //     setCityDefault($("#search-province-picker"),$("#search-city-picker"))
+        //     $("#search-city-picker").citypicker({
+        //         city: '',
+        //     });
+
+        // })
+    </script>
+
+    <!--黑色背景-->
+    <div class="boxy-modal-blackout"></div>   
+<div class="copyrightmod"><div class="pagemain"><div class="copyright1"><a href="#" style="padding-left:0;">关于我们</a>&nbsp;| &nbsp;<a href="#">加入超动力</a>&nbsp;|&nbsp;<a href="#">用户协议</a>&nbsp;|&nbsp;<a href="#">企业服务</a>&nbsp;|&nbsp;<a href="#">帮助中心</a>&nbsp;|&nbsp;<a href="#">联系我们</a></div><div class="copyright2">Copyright © 2018-2018 DynamicsX.CN 京ICP备14028320号</div></div></div></div></body>
+</html>
