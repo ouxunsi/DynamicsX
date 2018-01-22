@@ -1,0 +1,2 @@
+# DynamicsX
+The static page.
