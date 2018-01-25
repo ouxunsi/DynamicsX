@@ -108,6 +108,7 @@
 }
 
 #uploader .filelist {
+    
     list-style: none;
     margin-right:-20px;
     display: block !important;
@@ -131,7 +132,7 @@
     width: 238px;
     height: 179px;
     text-align: center;
-    margin: 1px 12px 20px 0;
+    margin: 1px 12px 22px 0;
     position: relative;
     display: inline;
     float: left;
