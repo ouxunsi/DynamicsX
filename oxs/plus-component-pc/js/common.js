@@ -1,6 +1,6 @@
 var loadHtml = "<div class='loading'><img src='" + TS.RESOURCE_URL + "/images/three-dots.svg' class='load'></div>";
 var clickHtml = "<div class='click_loading'><a href='javascript:;'>加载更多<svg class='icon mcolor' aria-hidden='true'><use xlink:href='#icon-icon07'></use></svg></a></div>";
-var confirmTxt = '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-shibai-copy"></use></svg>';
+var confirmTxt = '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-warning"></use></svg> ';
 var initNums = 255;
 
 // ajax 设置 headers
@@ -343,7 +343,7 @@ scroll.loadMore = function() {
                     }
                 }
 
-                $("http://tsplus.zhibocloud.cn/zhiyicx/plus-component-pc/js/img.lazy").lazyload({ effect: "fadeIn" });
+                $("img.lazy").lazyload({ effect: "fadeIn" });
             } else {
                 scroll.setting.canload = false;
                 if (scroll.setting.loadcount == 1 && scroll.setting.nodata == 0) {
@@ -395,10 +395,13 @@ scroll.clickMore = function(obj) {
 
                 // 点击加载更多
                 if (scroll.setting.loadtype == 2) {
-                    $(scroll.setting.loading).after(clickHtml);
+                    res.count = res.count ? res.count : 0;
+                    if (scroll.params.limit <= res.count) {
+                        $(scroll.setting.loading).after(clickHtml);
+                    }
                 }
 
-                $("http://tsplus.zhibocloud.cn/zhiyicx/plus-component-pc/js/img.lazy").lazyload({ effect: "fadeIn" });
+                $("img.lazy").lazyload({ effect: "fadeIn" });
             } else {
                 scroll.setting.canload = false;
                 $('.click_loading').html('没有更多了');
@@ -493,36 +496,6 @@ var follow = function(status, user_id, target, callback) {
     }
 }
 
-// 圈子
-var group = function(status, group_id, callback) {
-    checkLogin();
-
-    var url = TS.API + '/groups/' + group_id + '/join';
-    if (status == 0) {
-        $.ajax({
-            url: url,
-            type: 'POST',
-            success: function(response) {
-                callback();
-            },
-            error: function(xhr){
-                showError(xhr.responseJSON);
-            }
-        })
-    } else {
-        $.ajax({
-            url: url,
-            type: 'DELETE',
-            success: function(response) {
-                callback();
-            },
-            error: function(xhr){
-                showError(xhr.responseJSON);
-            }
-        })
-    }
-}
-
 // 话题
 var topic = function(status, topic_id, callback) {
     checkLogin();
@@ -582,16 +555,16 @@ var noticebox = function(msg, status, tourl) {
         }
     }
     if (status == 0) {
-        var html = '<div class="notice"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shibai-copy"></use></svg>' + msg + '</div>';
+        var html = '<div class="notice"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-warning"></use></svg> ' + msg + '</div>';
     } else {
-        var html = '<div class="notice"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xuanzedui-copy"></use></svg>' + msg + '</div>';
+        var html = '<div class="notice"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-choosed"></use></svg> ' + msg + '</div>';
     }
     _this.html(html);
-    _this.slideDown(500);
+    _this.slideDown(200);
     if (tourl == '') {
         setTimeout(function() {
             $('.noticebox').slideUp(200);
-        }, 1000);
+        }, 1500);
     } else {
         setTimeout(function() {
             noticebox_cb(tourl);
@@ -601,7 +574,7 @@ var noticebox = function(msg, status, tourl) {
 
 // 消息提示回调
 var noticebox_cb = function(tourl) {
-    window.location.href = tourl == 'refresh' ? window.location.href : tourl;
+    window.location.href = tourl == 'refresh' ? window.location.href : TS.SITE_URL + tourl;
 }
 
 // 无数据提示dom
@@ -615,8 +588,8 @@ var no_data = function(selector, type, txt) {
 var logout = function() {
     $('.nav_menu').hide();
     storeLocal.clear();
-    ly.confirm(formatConfirm('提示', '感谢您对' + TS.COMMON.site_name + '的信任，是否退出当前账号？'), '' ,'', function(){
-        window.location.href = 'feeds.htm'/*tpa=http://tsplus.zhibocloud.cn/passport/logout*/;
+    ly.confirm(formatConfirm('提示', '感谢您对' + (TS.COMMON.site_name || 'ThinkSNS+') + '的信任，是否退出当前账号？'), '' ,'', function(){
+        window.location.href = '/passport/logout';
     });
 }
 
@@ -637,16 +610,8 @@ var showError = function(message, defaultMessage) {
         return;
     }
     if (message.message && message.message !== null) {
-        var message = message.message;
-        for (var key in message) {
-            // if (Array.isArray(message[key])) {
 
-                noticebox(message[key], 0);
-                return;
-            // }
-        }
-
-        noticebox(defaultMessage, 0);
+        noticebox(message.message, 0);
         return;
     }
 
@@ -659,7 +624,7 @@ var showError = function(message, defaultMessage) {
     }
     noticebox(defaultMessage, 0);
     return;
-}
+};
 
 // ly.confirm 弹窗接口返回错误解析
 var lyShowError = function(message, defaultMessage) {
@@ -729,7 +694,7 @@ var checkIn = function(is_check, nums) {
             success: function(response) {
                 noticebox('签到成功', 1);
                 $('#checkin').addClass('checked_div');
-                var html = '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-qiandao1"></use></svg>'
+                var html = '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-checkin"></use></svg>'
                 html += '已签到<span>连续签到<font class="colnum">' + (nums + 1) + '</font>天</span>';
                 $('#checkin').html(html);
                 $('#checkin').removeAttr('onclick');
@@ -778,6 +743,9 @@ var rewarded = {
             if (type == 'user') {
                 url = '/api/v2/user/'+id+'/rewards';
             }
+            if (type == 'group-posts') {
+                url = '/api/v2/plus-group/group-posts/'+id+'/rewards';
+            }
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -799,47 +767,73 @@ var rewarded = {
         })
     },
     list: function(id, type){
-        var url = '/api/v2/feeds/'+id+'/rewards';
-        var app = '动态';
+        var url = '';
+
         if (type == 'answer') {
-            url = '/api/v2/question-answers/'+id+'/rewarders';
-            app = '问答';
+            url = '/question/answer/'+id+'/rewards';
+        } else if (type == 'news') {
+            url = '/news/'+id+'/rewards';
+        } else if(type == 'group-posts'){
+            url = '/group-posts/'+id+'/rewards';
+        } else {
+            url = '/feeds/'+id+'/rewards';
         }
-        if (type == 'news') {
-            url = '/api/v2/news/'+id+'/rewards';
-            app = '资讯';
-        }
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            error: function(xml) {
-                noticebox('打赏失败', 0);
-            },
-            success: function(res) {
-                if (res.length) {
-                    var html = '';
-                    html += '<div class="reward_popups">';
-                    html += '<p class="reward_title ucolor font14">打赏列表</p>';
-                    html += '<ul class="reward_list" id="J-reward-list">';
-                    for (var i in res) {
-                        html +=
-                        '<li>'+
-                            '<a href="/profile/' + res[i].user.id + '"><img class="lazy round" data-original="' + getAvatar(res[i].user, 40) + '" width="40"/></a>'+
-                            '<a href="/profile/' + res[i].user.id + '" class="uname">'+res[i].user.name+'</a>'+
-                            '<font color="#aaa">打赏了 '+app+'</font>'+
-                        '</li>';
-                    }
-                    html += '</ul>';
-                    html += '</div>';
-                    ly.loadHtml(html, '');
-                    $("http://tsplus.zhibocloud.cn/zhiyicx/plus-component-pc/js/img.lazy").lazyload();
-                }
-            }
-        });
+
+        ly.load(TS.SITE_URL + url, '', '340px');
     }
 }
 
+var getMaps = function(callback){
+    var html = '<div id="container" class="map" tabindex="0"></div>'+
+                    '<div id="pickerBox">'+
+                    '<input id="pickerInput" placeholder="输入关键字选取地点" /><button id="getpoi">确定</button>'+
+                    '<div id="poiInfo"></div>'+
+                '</div>';
+    ly.loadHtml(html, '', 600, 500);
+    var map = new AMap.Map('container', { zoom: 12 });
+    AMapUI.loadUI(['misc/PoiPicker'], function(PoiPicker) {
+        var poiPicker = new PoiPicker({
+            // city:'北京',
+            input: 'pickerInput'
+        });
+        //初始化poiPicker
+        poiPickerReady(poiPicker);
+    });
+    function poiPickerReady(poiPicker) {
+        window.poiPicker = poiPicker;
+        var marker = new AMap.Marker();
+        var infoWindow = new AMap.InfoWindow({
+            offset: new AMap.Pixel(0, -20)
+        });
+        //选取了某个POI
+        poiPicker.on('poiPicked', function(poiResult) {
+            var source = poiResult.source,
+                poi = poiResult.item,
+                info = {
+                    source: source,
+                    id: poi.id,
+                    name: poi.name,
+                    location: poi.location.toString(),
+                    address: poi.address
+                };
+            marker.setMap(map);
+            infoWindow.setMap(map);
+            marker.setPosition(poi.location);
+            infoWindow.setPosition(poi.location);
+            // infoWindow.setContent('POI信息: <pre>' + JSON.stringify(info, null, 2) + '</pre>');
+            infoWindow.open(map, marker.getPosition());
+            map.setCenter(marker.getPosition());
+            $('#pickerInput').val(poi.name);
+            $('#getpoi').on('click', function(){
+                ly.close();
+                callback(poi);
+            });
+        });
+        poiPicker.onCityReady(function() {
+            poiPicker.suggest('php');
+        });
+    }
+}
 // 评论
 var comment = {
     support: {
@@ -921,20 +915,20 @@ var comment = {
                         html += '            <span class="reply_name">' + TS.USER.name + '</span>';
                         html += '            <div class="reply_tool feed_datas">';
                         html += '                <span class="reply_time">刚刚</span>';
-                        html += '                <span class="reply_action options" onclick="options(this)"><svg class="icon icon-gengduo-copy" aria-hidden="true"><use xlink:href="#icon-gengduo-copy"></use></svg></span>';
+                        html += '                <span class="reply_action options" onclick="options(this)"><svg class="icon icon-more" aria-hidden="true"><use xlink:href="#icon-more"></use></svg></span>';
                         html += '                <div class="options_div">'
                         html += '                    <div class="triangle"></div>'
                         html += '                    <ul>';
                     if (_this.support.top) {
                         html += '                        <li>'
                         html += '                            <a href="javascript:;" onclick="comment.pinneds(\'' + res.comment.commentable_type + '\', ' + res.comment.commentable_id + ', ' + res.comment.id + ');">'
-                        html += '                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhiding-copy-copy1"></use></svg>申请置顶'
+                        html += '                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-pinned2"></use></svg>申请置顶'
                         html += '                            </a>'
                         html += '                        </li>';
                     }
                         html += '                        <li>'
                         html += '                            <a href="javascript:;" onclick="comment.delete(\'' + res.comment.commentable_type + '\', ' + res.comment.commentable_id + ', ' + res.comment.id + ');">'
-                        html += '                                <svg class="icon"><use xlink:href="#icon-shanchu-copy1"></use></svg>删除'
+                        html += '                                <svg class="icon"><use xlink:href="#icon-delete"></use></svg>删除'
                         html += '                            </a>'
                         html += '                        </li>'
                         html += '                    </ul>'
@@ -964,6 +958,11 @@ var comment = {
     },
     delete: function(type, source_id, id) {
         var url = '';
+        var _this = this;
+        if (_this.lockStatus == 1) {
+            noticebox('请勿重复提交', 0);
+            return;
+        }
         switch (type) {
             case 'feeds':
                 url = '/api/v2/feeds/' + source_id + '/comments/' + id;
@@ -973,7 +972,7 @@ var comment = {
                 break;
             case 'group-posts':
                 var group_id = window.location.pathname.split("/")[2];
-                url = '/api/v2/groups/' + group_id + '/posts/' + source_id + '/comments/' + id;
+                url = '/api/v2/plus-group/group-posts/' + source_id + '/comments/' + id;
                 break;
             case 'question-answers':
                 url = '/api/v2/question-answers/' + source_id + '/comments/' + id;
@@ -982,6 +981,7 @@ var comment = {
                 url = '/api/v2/questions/' + source_id + '/comments/' + id;
                 break;
         }
+        _this.lockStatus = 1;
         $.ajax({
             url: url,
             type: 'DELETE',
@@ -989,9 +989,11 @@ var comment = {
             success: function(res) {
                 $('#comment' + id).fadeOut();
                 $('.cs' + source_id).text(parseInt($('.cs' + source_id).text())-1);
+                _this.lockStatus = 0;
             },
             error: function(xhr){
                 showError(xhr.responseJSON);
+                _this.lockStatus =0;
             }
         });
     },
@@ -1003,6 +1005,10 @@ var comment = {
         }
         if (type == 'news') {
             url = '/api/v2/news/' + source_id + '/comments/' + id + '/pinneds';
+            pinneds(url);
+        }
+        if (type == 'group-posts') {
+            url = '/api/v2/plus-group/pinned/comments/'+ id;
             pinneds(url);
         }
     }
@@ -1043,9 +1049,9 @@ var liked = {
                 _this.box.find('a').addClass('act');
                 _this.box.find('font').text(_this.num);
                 if (_this.type) {
-                    _this.box.find('svg').html('<use xlink:href="#icon-xihuan-red"></use>');
+                    _this.box.find('svg').html('<use xlink:href="#icon-likered"></use>');
                 } else {
-                    _this.box.find('svg').html('<use xlink:href="#icon-xihuan-white-copy"></use>');
+                    _this.box.find('svg').html('<use xlink:href="#icon-like"></use>');
                 }
 
             },
@@ -1072,7 +1078,7 @@ var liked = {
                 _this.box.attr('status', 0);
                 _this.box.find('a').removeClass('act');
                 _this.box.find('font').text(_this.num);
-                _this.box.find('svg').html('<use xlink:href="#icon-xihuan-white"></use>');
+                _this.box.find('svg').html('<use xlink:href="#icon-like"></use>');
             },
             error: function(xhr) {
                 showError(xhr.responseJSON);
@@ -1092,7 +1098,7 @@ var liked = {
             break;
             case 'group':
                 var group_id = window.location.pathname.split("/")[2];
-                res.link = '/api/v2/groups/' + group_id + '/posts/' + this.row_id + '/like';
+                res.link = '/api/v2/plus-group/group-posts/' + this.row_id + '/likes';
                 res.unlink = res.link;
             break;
             case 'question':
@@ -1139,8 +1145,7 @@ var collected = {
                 _this.box.attr('status', 1);
                 _this.box.find('a').addClass('act');
                 _this.box.find('font').text(_this.num);
-                _this.box.find('svg').html('<use xlink:href="#icon-shoucang-copy"></use>');
-                _this.box.find('span.collect').text('已收藏');
+                _this.box.find('span').text('已收藏');
             },
             error: function(xhr) {
                 showError(xhr.responseJSON);
@@ -1165,8 +1170,7 @@ var collected = {
                 _this.box.attr('status', 0);
                 _this.box.find('a').removeClass('act');
                 _this.box.find('font').text(_this.num);
-                _this.box.find('svg').html('<use xlink:href="#icon-shoucang-copy1"></use>');
-                _this.box.find('span.collect').text('收藏');
+                _this.box.find('span').text('收藏');
             },
             error: function(xhr) {
                 showError(xhr.responseJSON);
@@ -1186,8 +1190,8 @@ var collected = {
             break;
             case 'group':
                 var group_id = window.location.pathname.split("/")[2];
-                res.link = '/api/v2/groups/' + group_id + '/posts/' + this.row_id + '/collection';
-                res.unlink = res.link;
+                res.link = '/api/v2/plus-group/group-posts/' + this.row_id + '/collections';
+                res.unlink = '/api/v2/plus-group/group-posts/' + this.row_id + '/uncollect';
             break;
             case 'question':
                 res.link = '/api/v2/user/question-answer/collections/' + this.row_id;
@@ -1234,6 +1238,41 @@ var pinneds = function (url) {
             url: url,
             type: 'POST',
             data: data,
+            success: function(res) {
+                layer.closeAll();
+                noticebox(res.message, 1);
+            },
+            error: function(error) {
+                lyShowError(error.responseJSON);
+            }
+        });
+    });
+};
+
+// 举报
+var reported = function (url) {
+    checkLogin();
+    var html = '<div class="pinned_box mr20 ml20 mt20">'
+                + '<p class="confirm_title">举报</p>'
+                + '<a class="ucolor">举报理由</a>'
+                + '<div class="pinned_input">'
+                    + '<textarea id="report-ct" rows="4" cols="30" placeholder="请输入举报理由，不超过190字"></textarea>'
+                + '</div>'
+            + '</div>';
+    ly.confirm(html, '', '', function(){
+        var reason = $('#report-ct').val();
+        if (!reason) {
+            lyNotice('请输入举报理由');
+            return false;
+        }
+        if (getLength(reason) > 190) {
+            lyNotice('举报理由不能大于190个字');
+            return false;
+        }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {reason: reason, content: reason},
             success: function(res) {
                 layer.closeAll();
                 noticebox(res.message, 1);
@@ -1389,7 +1428,7 @@ var thirdShare = function(type, url, title, pic, obj) {
             window.open(tourl);
           break;
         case 3: // 微信
-            $(obj).parent().find('.shareerweima').html('');
+           $(obj).parent().find('.shareerweima').html('');
             $(obj).parent().parent().find('.shareerweima').qrcode({
                 width: 86,
                 height:86,
@@ -1491,6 +1530,23 @@ var cancelBubble = function() {
     }
 }
 
+// 字数计算
+var strLen = function (str){
+    str = str.replace(/(\s+)|([\r\n])/g, '');
+    var len = 0;
+    for (var i=0; i<str.length; i++) {
+        var c = str.charCodeAt(i);
+        //单字节加1
+        if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) {
+            len++;
+        }
+        else {
+            len+=2;
+        }
+    }
+    return len;
+};
+
 $(function() {
 
     // Jquery fixed拓展
@@ -1525,18 +1581,18 @@ $(function() {
         if (!_st) _st=0;
         var _code = '<div id="ms_fixed_wrap">'
                   +      '<dl id="ms_fixed">'
-                  +          '<dd id="ms_comments"><a href="javascript:;" onclick="message.openChatDialog(0)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ico_pinglun"></use></svg></a></dd>'
-                  +          '<dd id="ms_likes"><a href="javascript:;" onclick="message.openChatDialog(1)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ico_zan"></use></svg></a></dd>'
-                  +          '<dd id="ms_notifications"><a href="javascript:;" onclick="message.openChatDialog(2)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ico_tongzhi"></use></svg></a></dd>'
-                  +          '<dd id="ms_pinneds"><a href="javascript:;" onclick="message.openChatDialog(3)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ico_shenghe"></use></svg></a></dd>'
+                  +          '<dd id="ms_comments"><a href="javascript:;" onclick="message.openChatDialog(0)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-side-msg"></use></svg></a></dd>'
+                  +          '<dd id="ms_likes"><a href="javascript:;" onclick="message.openChatDialog(1)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-side-like"></use></svg></a></dd>'
+                  +          '<dd id="ms_notifications"><a href="javascript:;" onclick="message.openChatDialog(2)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-side-notice"></use></svg></a></dd>'
+                  +          '<dd id="ms_pinneds"><a href="javascript:;" onclick="message.openChatDialog(3)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-side-auth"></use></svg></a></dd>'
                   +     '</dl>'
                   + '</div>';
-        //if (_st == 1) {
-        //    $(_code).hide().appendTo("body").fixed({x:-44,y:0}).fadeIn(500);
-        //    $("#ms_fixed dt a.close").width('68px');
-       // } else {
-      //      $(_code).hide().appendTo("body").fixed({x:0,y:0}).fadeIn(500);
-       // }
+        if (_st == 1) {
+            $(_code).hide().appendTo("body").fixed({x:-44,y:0}).fadeIn(500);
+            $("#ms_fixed dt a.close").width('68px');
+        } else {
+            $(_code).hide().appendTo("body").fixed({x:0,y:0}).fadeIn(500);
+        }
         $("#ms_fixed dt").click(function(){
             var _right = $("#ms_fixed").offset().right;
             if (_right>=0) {
@@ -1591,7 +1647,7 @@ $(function() {
         }
 
         // 更多按钮
-        if(!target.is('.icon-gengduo-copy') && target.parents('.options_div').length == 0) {
+        if(!target.is('.icon-more') && target.parents('.options_div').length == 0) {
            $('.options_div').hide();
         }
 
@@ -1610,6 +1666,10 @@ $(function() {
             $('.share-show').fadeOut();
         }
 
+        if(!target.is('.u-share, .u-share-show') && !target.is('.u-share svg') && target.parents('.u-share-show').length == 0) {
+            $('.u-share-show').fadeOut();
+        }
+
         // 相关问题
         if(!target.is('div.question-searching') && target.parents('.question-searching').length == 0) {
             $('.question-searching').fadeOut();
@@ -1618,6 +1678,11 @@ $(function() {
         // 问题话题
         if(!target.is('div.question-topics-list') && !target.is('dl,dt,dd,li')) {
             $('.question-topics-list').hide();
+        }
+
+        // 圈子管理
+        if(!target.is('.u-menu li') && !target.is('.u-opt svg')) {
+            $('.u-menu').fadeOut();
         }
     });
 
@@ -1637,6 +1702,7 @@ $(function() {
     $("#head_search").keyup(function(event){
         //利用event的timeStamp来标记时间，这样每次的keyup事件都会修改last的值
         head_last = event.timeStamp;
+        console.log(head_last)
         setTimeout(function(){
             if(head_last - event.timeStamp == 0){
                 head_search();
@@ -1692,7 +1758,7 @@ $(function() {
         }
 
         var type = $(this).parents('li').attr('type');
-        window.location.href = 'index-1.htm'/*tpa=http://tsplus.zhibocloud.cn/search/*/ + type + '/' + val;
+        window.location.href = '/search/' + type + '/' + val;
     });
 
     // 删除历史记录
@@ -1724,7 +1790,7 @@ $(function() {
     $('.nav_search_icon').click(function(){
         var val = $('#head_search').val();
         setHistory(val);
-        window.location.href = 'index-2.htm'/*tpa=http://tsplus.zhibocloud.cn/search/1/*/ + val;
+        window.location.href = '/search/1/' + val;
     })
 
     // 下拉框
@@ -1796,6 +1862,19 @@ $(function() {
         }
     });
 
+    // 显示跳转详情文字
+    $(document).on("mouseover mouseout", '.date', function(event){
+        if(event.type == "mouseover"){
+          var width = $(this).find('span').first().width();
+            width = width < 60 ? 60 : width;
+          $(this).find('span').first().hide();
+          $(this).find('span').last().css({display:'inline-block', width: width});
+        }else if(event.type == "mouseout"){
+          $(this).find('span').first().show();
+          $(this).find('span').last().hide();
+        }
+    });
+
     $(document).on('focus keyup change', '.reward_input input', function() {
         $('.reward_spans span').removeClass('current');
     });
@@ -1809,7 +1888,7 @@ $(function() {
         var name = $(this).data('name');
 
         var html = '<div id="ms_chat_tips">' + name + '<div class="tips_triangle"></div></div>';
-        var top = $(this).offset().top; 
+        var top = $(this).offset().top;
         if (event.type == 'mouseover') {
             $(this).addClass('tips_current');
 
@@ -1822,8 +1901,31 @@ $(function() {
         }
     });
 
+    // IM聊天
     if (TS.MID > 0 && TS.BOOT['im:serve']) {
         // 聊天初始化
-        message.init();
+        // message.init();
     }
+
+    // 回车事件绑定
+    document.onkeyup = function(e){
+        e = e || window.event;
+        // 回车
+        if(e.keyCode == 13){
+            var target = e.target || e.srcElment;
+            if(target.id == 'head_search'){ // 搜索
+                var val = $('#head_search').val();
+                setHistory(val);
+                window.location.href = '/search/1/' + val;
+            }else if(target.id == 'l_login' || target.id == 'l_password'){ // 登录
+                $('#login_btn').click();
+            }
+        }
+
+        // ctrl + 回车发送消息
+        if(e.ctrlKey && e.keyCode == 13 && strLen($('#chat_text').val()) != 0) {
+            $('#chat_send').click();
+        }
+    }
+
 });
