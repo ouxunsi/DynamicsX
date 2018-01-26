@@ -1319,22 +1319,22 @@ $(function() {
 
 
 
-		$("#form-data-designTime").jeDate({
-			isinitVal: false,
-			ishmsVal: false,
-			festival: false, //节日
-			isToday: true,
-			minDate: '',
-			maxDate: $.nowDate(0),
-			format: "YYYY-MM-DD",
-			zIndex: 3000,
-			choosefun: function(elem, val) {
-				elem.css({
-					'opacity': '1',
-					'width': 'auto'
-				})
-			},
-		});
+		//$("#form-data-designTime").jeDate({
+		//	isinitVal: false,
+		//	ishmsVal: false,
+			//festival: false, //节日
+			//isToday: true,
+		//	minDate: '',
+		//	maxDate: $.nowDate(0),
+		//	format: "YYYY-MM-DD",
+		//	zIndex: 3000,
+		//	choosefun: function(elem, val) {
+		//		elem.css({
+		//			'opacity': '1',
+		//			'width': 'auto'
+		//		})
+		//	},
+		//});
 		if ($('.textarea-style')[0].scrollHeight > 135) {
 			$('.textarea-style').css({
 				'overflow': 'auto',
