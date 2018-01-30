@@ -567,6 +567,9 @@ z-index:99;}
 .aboutauthbtn3 a{ float:left; width:86px; height:34px; line-height:34px; border:1px #bbbbbb solid; text-align:center; font-size:14px; color:#666666; background:#fff;  border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 .aboutauthbtn3 a:hover{ float:left; width:86px; height:34px; line-height:34px; border:1px #bbbbbb solid; text-align:center; font-size:14px; color:#666666; background:#fff;  border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 
+.aboutauthbtn4{ float:left;}
+.aboutauthbtn4 a{ float:right; width:88px; height:36px; line-height:36px; border:1px #cccccc solid; text-align:center; font-size:14px; color:#999999; background:#fff;  border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+.aboutauthbtn4 a:hover{ float:right; width:88px; height:36px; line-height:36px; border:1px #999999 solid; text-align:center; font-size:14px; color:#666666; background:#fff;  border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 
 /*分页效果*/
 .pagemod{ float:left; width:100%; margin:20px 0;}
