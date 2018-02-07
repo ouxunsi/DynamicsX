@@ -2968,3 +2968,20 @@ border-radius: 5px;
 .workstagtit1{float:left;font-size:18px;color:#0d91ff;}
 .workstagtit2{float:left;font-size:18px;color:#999999;}
 .workstaglist{float:left;width:100%;}
+
+
+.uploadmod4{
+    float: left;
+    margin: 0 12px 0 0;
+    height: 182px;
+    width: 240px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #f2f2f2;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.uploadmod4pic{margin-top:44px;margin-bottom:8px;}
+.uploadmod4tit1{font-size:14px;color:#333333;}
+.uploadmod4tit2{font-size:12px;color:#999999;line-height:14px;margin-top:7px;}
