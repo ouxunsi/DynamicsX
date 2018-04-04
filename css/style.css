@@ -117,10 +117,8 @@ div.flicking_con a.on {background-position:0 -21px}
 .dhpic ul{ 
 display:none;
 position: absolute;
-padding: 12px 0;
-width: 200px !important;
-height:100px;
-padding: 10px 10px 10px 0;
+padding: 12px 20px;
+width: 389px !important;
 left: -50%;
 top:62px;
 background: #FFF;
@@ -128,8 +126,10 @@ border: solid 1px #ebebeb;
 box-shadow: 4px 7px 16px rgba(0,0,0,.32);
 z-index:99;}
 
-
-
+.dhpic ul li a .tit2{ float:left; font-size:14px; color:#555555; line-height:26px; margin:0 8px;}
+.dhpic ul li a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
+.dhpic ul li.lihovers1 a .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
+.dhpic ul li.lihovers1 a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
 .g-header{ float:left; height: 36px; padding:12px 0; margin-left:30px;}
 .g-header .g-head-nav {
     float: left;
@@ -152,9 +152,16 @@ z-index:99;}
 .nav2 ul.nav2dropdown li{ float:left;  margin:0 10px; position: relative;  z-index:9;}
 .nav2 ul.nav2dropdown li a .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px; color:#333333; }
 .nav2 ul.nav2dropdown li a:hover .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#01a4e7;}
+.nav2 ul.nav2dropdown  ul li{margin:0;}
 .nav2 ul.nav2dropdown li.lihover a{ float:left;  text-align:center; font-size:14px;  color:#06a3f8; }
-.nav2 ul.nav2dropdown li.lihover a:hover{ float:left;  text-align:center; font-size:14px;  color:#06a3f8; }
-.nav2 ul.nav2dropdown ul{ position:absolute; display:none; left:-100px; top:45px; width:210px; padding:20px; background:#fff; border-left:1px #dadada solid; border-right:1px #dadada solid; border-bottom:1px #dadada solid;box-shadow:0 1px 6px rgba(0, 0, 0, 0.2)}
+.nav2 ul.nav2dropdown li.lihover a:hover{ float:left;  text-align:center; font-size:14px;  color:#06a3f8;}
+.nav2 ul.nav2dropdown li.lihover a .tit2{ float:left; font-size:14px; color:#555555; line-height:26px; margin:0 8px;}
+.nav2 ul.nav2dropdown li.lihover a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
+.nav2 ul.nav2dropdown li.lihovers a .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#0d91ff; }
+.nav2 ul.nav2dropdown li.lihovers a:hover .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#0d91ff;}
+.nav2 ul.nav2dropdown ul li.lihovers1 a .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
+.nav2 ul.nav2dropdown ul li.lihovers1 a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
+.nav2 ul.nav2dropdown ul{ position:absolute; display:none; left:-100px; top:45px; width:389px; padding:14px 20px; background:#fff; border-left:1px #dadada solid; border-right:1px #dadada solid; border-bottom:1px #dadada solid;box-shadow:0 1px 6px rgba(0, 0, 0, 0.2)}
 .nav2 ul.nav2dropdown ul .arrow1{  display: inline-block;
     position: absolute;
     width: 13px;
@@ -164,12 +171,7 @@ z-index:99;}
     background: url(../images/arrow.png) 0 0 no-repeat;
 	z-index:99;
 }
-.nav2 ul.nav2dropdown li.lihover a .tit2{ float:left; font-size:14px; color:#3f3f40; line-height:25px; margin:0 10px;}
-.nav2 ul.nav2dropdown li.lihover a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:25px; margin:0 10px;}
 
-
-.nav2 ul.nav2dropdown li.lihovers a .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#0d91ff; }
-.nav2 ul.nav2dropdown li.lihovers a:hover .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#0d91ff;}
 
 .nav4mod{ float:left; width:100%; background:#ffffff; border-bottom:1px #e8e9ed solid; position:relative; z-index:1;}
 .nav4{ float:left; width:100%;height:58px;text-align:center;}
