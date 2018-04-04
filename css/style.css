@@ -117,7 +117,7 @@ div.flicking_con a.on {background-position:0 -21px}
 .dhpic ul{ 
 display:none;
 position: absolute;
-padding: 12px 20px;
+padding: 12px 12px;
 width: 389px !important;
 left: -50%;
 top:62px;
@@ -161,7 +161,7 @@ z-index:99;}
 .nav2 ul.nav2dropdown li.lihovers a:hover .tit1{ float:left;  height:45px; line-height:45px; text-align:center; font-size:14px;  color:#0d91ff;}
 .nav2 ul.nav2dropdown ul li.lihovers1 a .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
 .nav2 ul.nav2dropdown ul li.lihovers1 a:hover .tit2{ float:left; font-size:14px; color:#0d91ff; line-height:26px; margin:0 8px;}
-.nav2 ul.nav2dropdown ul{ position:absolute; display:none; left:-100px; top:45px; width:389px; padding:14px 20px; background:#fff; border-left:1px #dadada solid; border-right:1px #dadada solid; border-bottom:1px #dadada solid;box-shadow:0 1px 6px rgba(0, 0, 0, 0.2)}
+.nav2 ul.nav2dropdown ul{ position:absolute; display:none; left:-100px; top:45px; width:389px; padding:14px 12px; background:#fff; border-left:1px #dadada solid; border-right:1px #dadada solid; border-bottom:1px #dadada solid;box-shadow:0 1px 6px rgba(0, 0, 0, 0.2)}
 .nav2 ul.nav2dropdown ul .arrow1{  display: inline-block;
     position: absolute;
     width: 13px;
